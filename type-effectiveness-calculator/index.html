@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Pokemon Type effectiveness Calculator</title>
+    
+    
+      <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQDKZLT');</script>
+<!-- End Google Tag Manager -->
+<meta name="description" content="Pokemon effectiveness Type Calculator is a powerful tool that helps trainers analyze and strategize battles by calculating the strengths and effectiveness of different Pokemon types. With this interactive calculator, you can input the types of attacking and defending Pokemon and instantly receive a comprehensive breakdown of the damage multipliers. Explore the effectiveness of moves and plan your team composition wisely to gain the upper hand in battles. Master type matchups and become a formidable Pokemon trainer with the Pokemon Type Calculator.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pokemon Type Effectiveness Calculator",
+  "description": "Pokemon Effectiveness Type Calculator is a powerful tool that helps trainers analyze and strategize battles by calculating the strengths and weaknesses of different Pokemon types.",
+  "url": "https://kfbesa.com/pokemon/type-effectiveness-calculator",
+  "applicationCategory": "Game",
+  "operatingSystem": "All",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "9835232"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQDKZLT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Navbar Start -->
+   <nav>
+     <ul>
+          <li><a href="https://kfbesa.com">Home</a></li>
+       <li><a href="https://kfbesa.com/blog/">Blog</a></li>
+
+       <li><a href="https://kfbesa.com/persona/">Persona Fusion Calculators</a></li>
+       <li><a href="https://kfbesa.com/pokemon/">Pokemon Tools</a></li>
+       
+     </ul>
+   </nav>
+   <style>
+     nav {
+       background-color: #f2f2f2;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 9999;
+       overflow-x: auto;
+     }
+   
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       white-space: nowrap;
+     }
+   
+     nav li {
+       display: inline-block;
+       padding: 20px;
+     }
+   
+     nav a {
+       color: black;
+       font-size: 16px;
+       text-decoration: none;
+     }
+   
+     /* Icon for mobile scrolling */
+     @media (max-width: 767px) {
+       nav {
+         overflow-x: scroll;
+       }
+   
+       nav::-webkit-scrollbar {
+         width: 6px;
+         height: 6px;
+       }
+   
+       nav::-webkit-scrollbar-thumb {
+         background-color: rgba(255, 255, 255, 0.5);
+         border-radius: 3px;
+       }
+     }
+   
+     /* Additional CSS rule for creating space below navbar */
+     body {
+       margin-top: 60px;
+       /* Adjust this value as needed */
+     }
+   </style>
+   <!-- Navbar end -->
+
+    <main>
+        <div class="main__tiles">
+            <div class="main__tiles__title">
+                <p>Pokémon Combination Type:</p>
+            </div>
+
+            <div class="main__tiles__types">
+                <button class="type nor" typeBtn value="nor">Normal</button>
+                <button class="type fir" typeBtn value="fir">Fire</button>
+                <button class="type wat" typeBtn value="wat">Water</button>
+                <button class="type ele" typeBtn value="ele">Electric</button>
+                <button class="type gra" typeBtn value="gra">Grass</button>
+                <button class="type ice" typeBtn value="ice">Ice</button>
+
+                <button class="type fig" typeBtn value="fig">Fighting</button>
+                <button class="type poi" typeBtn value="poi">Poison</button>
+                <button class="type gro" typeBtn value="gro">Ground</button>
+                <button class="type fly" typeBtn value="fly">Flying</button>
+                <button class="type psy" typeBtn value="psy">Psychic</button>
+                <button class="type bug" typeBtn value="bug">Bug</button>
+
+                <button class="type roc" typeBtn value="roc">Rock</button>
+                <button class="type gho" typeBtn value="gho">Ghost</button>
+                <button class="type dra" typeBtn value="dra">Dragon</button>
+                <button class="type dar" typeBtn value="dar">Dark</button>
+                <button class="type ste" typeBtn value="ste">Steel</button>
+                <button class="type fai" typeBtn value="fai">Fairy</button>
+            </div>
+        </div>
+
+        <div id="result" class="main__result">
+            <div class="main__result__title">
+                <p>Effectiveness:</p>
+            </div>
+
+            <div class="main__result__effectiveness">
+                <div class="effectiveness__effect">
+                    <p class="effectiveness__title">No effect:</p>
+                    <div id="noEffect"></div>
+                </div>
+
+                <div class="effectiveness__effect">
+                    <p class="effectiveness__title">Not very effective:</p>
+                    <div id="notVeryEffect"></div>
+                </div>
+
+                <div class="effectiveness__effect">
+                    <p class="effectiveness__title">Normal:</p>
+                    <div id="normalEffect"></div>
+                </div>
+
+                <div class="effectiveness__effect">
+                    <p class="effectiveness__title">Super-effective:</p>
+                    <div id="superEffect"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="bg">
+        <img class="bg--image" src="./assets/img/bg.png">
+    </div>
+
+    <footer class="footer">
+
+    </footer>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>

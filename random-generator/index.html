@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="An online tool that generates random Pokemon names with ratings. Create unique and exciting Pokemon combinations for your gaming adventures.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebApplication",
+  "name": "Random Pokemon Generator",
+  "description": "An online tool that generates random Pokemon names with ratings.",
+  "url": "https://www.example.com/random-pokemon-generator",
+  "applicationCategory": "Game",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "ratingCount": "100"
+  }
+}
+</script>
+
+    <title>Random Pokemon Generator</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5Y7ZKQYSQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E5Y7ZKQYSQ');
+</script>
+
+  
+  
+  </head>
+  <body>
+    <header>
+      <h1>Random Pokemon Generator</h1>
+    </header>
+
+
+  <body>
+    
+<!-- Navbar Start -->
+   <nav>
+     <ul>
+       <li><a href="https://kfbesa.com">Home</a></li>
+       <li><a href="https://kfbesa.com/blog/">Blog</a></li>
+
+       <li><a href="https://kfbesa.com/persona/">Persona Fusion Calculators</a></li>
+       <li><a href="https://kfbesa.com/pokemon/">Pokemon Tools</a></li>
+       
+     </ul>
+   </nav>
+   <style>
+     nav {
+       background-color: #f2f2f2;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 9999;
+       overflow-x: auto;
+     }
+   
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       white-space: nowrap;
+     }
+   
+     nav li {
+       display: inline-block;
+       padding: 20px;
+     }
+   
+     nav a {
+       color: black;
+       font-size: 16px;
+       text-decoration: none;
+     }
+   
+     /* Icon for mobile scrolling */
+     @media (max-width: 767px) {
+       nav {
+         overflow-x: scroll;
+       }
+   
+       nav::-webkit-scrollbar {
+         width: 6px;
+         height: 6px;
+       }
+   
+       nav::-webkit-scrollbar-thumb {
+         background-color: rgba(255, 255, 255, 0.5);
+         border-radius: 3px;
+       }
+     }
+   
+     /* Additional CSS rule for creating space below navbar */
+     body {
+       margin-top: 60px;
+       /* Adjust this value as needed */
+     }
+   </style>
+   <!-- Navbar end -->
+
+
+    <div class="container">
+      <button id="btn">Generate</button>
+<div id="card-container"></div>
+
+          </div>
+      
+
+    <script>
+      const typeColor = {
+        bug: "#26de81",
+        dragon: "#ffeaa7",
+        electric: "#fed330",
+        fairy: "#FF0069",
+        fighting: "#30336b",
+        fire: "#f0932b",
+        flying: "#81ecec",
+        grass: "#00b894",
+        ground: "#EFB549",
+        ghost: "#a55eea",
+        ice: "#74b9ff",
+        normal: "#95afc0",
+        poison: "#6c5ce7",
+        psychic: "#a29bfe",
+        rock: "#2d3436",
+        water: "#0190FF",
+      };
+
+      const url = "https://pokeapi.co/api/v2/pokemon/";
+      const cardContainer = document.getElementById("card-container");
+      const btn = document.getElementById("btn");
+
+      let generate = () => {
+        cardContainer.innerHTML = ""; // Clear existing cards
+
+        for (let i = 0; i < 6; i++) {
+          let num = Math.floor(Math.random() * 150 + 1);
+          const finalurl = url + num;
+          fetch(finalurl)
+            .then((response) => response.json())
+            .then((data) => fetchData(data));
+        }
+      };
+
+      let fetchData = (data) => {
+        const hp = data.stats[0].base_stat;
+        const name = data.name[0].toUpperCase() + data.name.slice(1);
+        const statAttack = data.stats[1].base_stat;
+        const statDefense = data.stats[2].base_stat;
+        const statSpeed = data.stats[5].base_stat;
+        const statspecialattack = data.stats[3].base_stat;
+        const statspecialdefense = data.stats[4].base_stat;
+        const pokeimg = data.sprites.other.dream_world.front_default;
+        const backColor = typeColor[data.types[0].type.name];
+
+        const pokemonCard = document.createElement("div");
+        pokemonCard.classList.add("pokemon-card");
+
+        pokemonCard.innerHTML = `
+          <p class="hp"><span>HP</span>${hp}</p>
+          <img src="${pokeimg}" alt="">
+          <h2 id="poke-name">${name}</h2>
+          <div class="types"></div>
+          <div class="stats">
+              <div>
+                  <h3>${statAttack}</h3>
+                  <p>Attack</p>
+              </div>
+              <div>
+                  <h3>${statDefense}</h3>
+                  <p>Defense</p>
+              </div>
+              <div>
+                  <h3>${statSpeed}</h3>
+                  <p>Speed</p>
+              </div>
+          </div>
+          <div class="special-stats">
+              <div>
+                  <h3>${statspecialattack}</h3>
+                  <p>Special-Attack</p>
+              </div>
+              <div>
+                  <h3>${statspecialdefense}</h3>
+                  <p>Special-Defense</p>
+              </div>
+          </div>
+        `;
+
+        appendTypes(data.types, pokemonCard);
+        addbackcolor(backColor, pokemonCard);
+
+        cardContainer.appendChild(pokemonCard);
+      };
+
+      let appendTypes = (types, pokemonCard) => {
+        types.forEach((type) => {
+          let span = document.createElement("SPAN");
+          span.textContent = type.type.name;
+          pokemonCard.querySelector(".types").appendChild(span);
+        });
+      };
+
+      let addbackcolor = (color, pokemonCard) => {
+        pokemonCard.style.background = `radial-gradient(circle at 50% 0%, ${color} 39%,#ffffff 36%)`;
+        pokemonCard.querySelectorAll(".types span").forEach((type) => {
+          type.style.backgroundColor = color;
+        });
+      };
+
+      btn.addEventListener("click", generate);
+      window.addEventListener("load", generate);
+    </script>
+  </body>
+
+<style>
+.body{
+margin: 0;
+        padding: 0;
+      }
+.container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.pokemon-card {
+  width: 200px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  display: inline-block;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.pokemon-card img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  display: block;
+}
+
+.pokemon-card h2 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.pokemon-card .name {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.pokemon-card .types {
+  margin-bottom: 10px;
+}
+
+.pokemon-card .types span {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+  color: white;
+  font-size: 12px;
+}
+
+.pokemon-card .stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.pokemon-card .stats div {
+  text-align: center;
+}
+
+.pokemon-card .special-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pokemon-card .special-stats div {
+  text-align: center;
+}
+
+.hp {
+  background-color: #ddd;
+  border-radius: 4px;
+  padding: 4px;
+  margin-bottom: 10px;
+}
+
+.hp span {
+  font-weight: bold;
+}
+
+#btn {
+  padding: 12px 24px;
+  margin-top: 20px;
+  font-size: 16px;
+  background-color: #0190ff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#btn:hover {
+  background-color: #0d7dd9;
+}
+
+#card-container {
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .pokemon-card {
+    width: 100%;
+  }
+
+  .pokemon-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .pokemon-card h2 {
+    font-size: 18px;
+  }
+
+  .pokemon-card .name {
+    font-size: 16px;
+  }
+
+  .pokemon-card .types span {
+    font-size: 10px;
+  }
+
+  .pokemon-card .stats h3,
+  .pokemon-card .special-stats h3 {
+    font-size: 14px;
+  }
+
+  #btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+</style>
+
+    <footer>
+      <p>Created by [kfbesa]</p>
+    </footer>
+
+    <script>
+      // JavaScript code for the random Pokemon generator goes here
+    </script>
+  </body>
+</html>

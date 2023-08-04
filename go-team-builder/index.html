@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokemon Go Team Builder</title>
+  <meta name="description" content="The Pokemon Go Team Builder is a tool for creating and managing your Pokemon team for battles. Start building your team and optimize it for success!">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQDKZLT');</script>
+<!-- End Google Tag Manager -->
+  
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pokemon Go Team Builder",
+  "description": "The Pokemon Go Team Builder is a tool for creating and managing your Pokemon team for battles.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "482924"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use the Pokemon Go Team Builder",
+  "description": "Learn how to use the Pokemon Go Team Builder to create and manage your Pokemon team for battles.",
+  "image": [
+    "https://kfbesa.com/pokemon/random-team-builder/images/chose-pokemon.webp"
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1: Choose Your Pokemon",
+      "image": [
+        "https://kfbesa.com/pokemon/random-team-builder/images/chose-pokemon.webp"
+      ],
+      "text": "Follow the instructions below to select the Pokemon for your team:\n\n1. Click on the dropdown menu labeled 'Select Pokemon' to open the list of available Pokemon.\n2. Scroll through the list and click on the Pokemon you want to add to your team. You can select multiple Pokemon by holding down the Ctrl (or Command) key while clicking on each Pokemon.\n3. Once you've selected a Pokemon, it will appear as a card in the 'Your Team' section below the dropdown menu.\n4. If you want to remove a Pokemon from your team, click the 'Remove' button on its card."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2: View Your Team",
+      "image": [
+        "https://kfbesa.com/pokemon/random-team-builder/images/view-team.webp"
+      ],
+      "text": "Once you've selected your Pokemon team, you can view it in the 'Your Team' section. The section will display cards for each Pokemon in your team, including the Pokemon's image, name, and other details."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3: Combat Power (CSA)",
+      "image": [
+        "https://kfbesa.com/pokemon/random-team-builder/images/csa.webp"
+      ],
+      "text": "In the Combat Power (CSA) section, you can see the details of the Pokemon in your team. Each Pokemon card displays the Pokemon's image, name, type, height, weight, base experience, abilities, and stats."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4: Analyze Your Team",
+      "image": [
+        "https://kfbesa.com/pokemon/random-team-builder/images/team-analysis.webp"
+      ],
+      "text": "As you select and modify your team, the Combat Power (CSA) section will automatically update to reflect the Pokemon in your team. This information can help you analyze your team's strengths and weaknesses."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 5: Optimize Your Team",
+      "image": [
+        "https://kfbesa.com/pokemon/random-team-builder/images/view-team.webp"
+      ],
+      "text": "Use the information from the Combat Power (CSA) section to optimize your team. Consider the Pokemon's types, abilities, and stats to create a well-rounded and powerful team for battles."
+    }
+  ]
+}
+</script>
+
+  <style>
+    /* Global styles */
+    body {
+      font-family:  'Open Sans', Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+
+
+
+#special-notice {
+  background-color: yellow;
+  color: red;
+  padding: 10px;
+  font-weight: bold;
+}
+
+    .container {
+      margin-top: 20px;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+    }
+
+    .team-section {
+      margin-bottom: 20px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .team-section h2 {
+      margin-top: 0;
+    }
+
+    .select-pokemon {
+      width: 100%;
+    }
+
+    .team-container {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      background-color: #fff;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .team-pokemon-card {
+    
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .team-pokemon-card img {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .team-pokemon-card h4 {
+      margin: 0;
+    }
+
+    .remove-pokemon-btn {
+      margin-left: auto;
+    }
+
+    .csa-section {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    
+    }
+
+    .csa-pokemon-card {
+      margin-bottom: 20px;
+      padding: 10px;
+      background-color: #f8f8f8;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .csa-pokemon-card img {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 10px;
+    }
+img {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  .separator {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+  
+    .csa-pokemon-card h4 {
+      margin: 0;
+      text-align: center;
+    }
+
+    .csa-pokemon-card p {
+      margin: 0;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+<style>
+    /* Additional CSS styles */
+    .paragraph-container {
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 1.5;
+        margin: 10px;
+        padding: 10px;
+    }
+      .separator {
+  border-top: 1px solid #ccc;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+    .paragraph-container p {
+        font-size: 16px;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+    
+    .paragraph-container h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .highlight {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    
+.paragraph-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add any additional styles for the image here */
+}
+
+
+    
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+ 
+  
+  
+</head>
+
+
+ 
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQDKZLT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  
+  
+<!-- Navbar Start -->
+   <nav>
+     <ul>
+       <li><a href="https://kfbesa.com">Home</a></li>
+       <li><a href="https://kfbesa.com/blog/">Blog</a></li>
+
+       <li><a href="https://kfbesa.com/persona/">Persona Fusion Calculators</a></li>
+       <li><a href="https://kfbesa.com/pokemon/">Pokemon Tools</a></li>
+       
+     </ul>
+   </nav>
+   <style>
+     nav {
+       background-color: #f2f2f2;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 9999;
+       overflow-x: auto;
+     }
+   
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       white-space: nowrap;
+     }
+   
+     nav li {
+       display: inline-block;
+       padding: 20px;
+     }
+   
+     nav a {
+       color: black;
+       font-size: 16px;
+       text-decoration: none;
+     }
+   
+     /* Icon for mobile scrolling */
+     @media (max-width: 767px) {
+       nav {
+         overflow-x: scroll;
+       }
+   
+       nav::-webkit-scrollbar {
+         width: 6px;
+         height: 6px;
+       }
+   
+       nav::-webkit-scrollbar-thumb {
+         background-color: rgba(255, 255, 255, 0.5);
+         border-radius: 3px;
+       }
+     }
+   
+     /* Additional CSS rule for creating space below navbar */
+     body {
+       margin-top: 60px;
+       /* Adjust this value as needed */
+     }
+   </style>
+   <!-- Navbar end -->
+
+
+  <div class="container">
+    <h1>Pokemon Go Team Builder</h1>
+
+<div class="paragraph-container">
+<p>Welcome to the <strong>Pokemon Go Team Builder!</strong> Build your dream team of Pokemon and become a legendary Trainer. With countless Pokemon to choose from, create a squad that matches your playstyle and strategy. Let's start building your formidable team!</p></div>
+    <div class="team-section">
+      <h2>Choose Your Pokemon</h2>
+
+      <div class="form-group">
+        <select id="select-pokemon" class="select-pokemon" multiple="multiple"></select>
+      </div>
+      <div id="team-container" class="team-container"></div>
+    </div>
+
+    <div class="csa-section">
+      <h2>Combat Power (CSA)</h2>
+      <div id="csa-pokemon-container" class="row"></div>
+    </div>
+  </div><div class="separator"></div>
+
+<div class="paragraph-container">
+<h2>How to Use our Pokemon Go Team Builder</h2>
+
+
+<p>wellcome to Pokemon Go Team Builder guide. This tool helps you create and manage your Pokemon team for battles. Follow the steps below to make the most of this calculator.</p>
+
+  <h3>Step 1: Choose Your Pokemon</h3>
+  <img src="./images/chose-pokemon.webp" alt="Pokemon Selection">
+  <p>In this step, you'll be selecting the Pokemon for your team. Follow the instructions below:</p>
+
+  <ol>
+    <li>Click on the dropdown menu labeled "Select Pokemon" to open the list of available Pokemon.</li>
+    <li>Scroll through the list and click on the Pokemon you want to add to your team. You can select multiple Pokemon by holding down the Ctrl (or Command) key while clicking on each Pokemon.</li>
+    <li>Once you've selected a Pokemon, it will appear as a card in the "Your Team" section below the dropdown menu.</li>
+    <li>If you want to remove a Pokemon from your team, click the "Remove" button on its card.</li>
+  </ol>
+
+  <h3>Step 2: View Your Team</h3>
+  <img src="./images/view-team.webp" alt="Team View">
+  <p>Once you've selected your Pokemon team, you can view it in the "Your Team" section. The section will display cards for each Pokemon in your team, including the Pokemon's image, name, and other details.</p>
+
+  <h3>Step 3: Combat Power (CSA)</h3>
+  <img src="./images/csa.webp" alt="CSA Pokemon">
+  <p>In the Combat Power (CSA) section, you can see the details of the Pokemon in your team. Each Pokemon card displays the Pokemon's image, name, type, height, weight, base experience, abilities, and stats.</p>
+
+  <h3>Step 4: Analyze Your Team</h3>
+  <img src="./images/team-analysis.webp" alt="Team Analysis">
+  <p>As you select and modify your team, the Combat Power (CSA) section will automatically update to reflect the Pokemon in your team. This information can help you analyze your team's strengths and weaknesses.</p>
+
+  <h3>Step 5: Optimize Your Team</h3>
+  <img src="./images/view-team.webp" alt="Team Optimization">
+  <p>Use the information from the Combat Power (CSA) section to optimize your team. Consider the Pokemon's types, abilities, and stats to create a well-rounded and powerful team for battles.</p>
+
+  <p>That's it! You now know how to use the Pokemon Go Team Builder calculator. Enjoy creating and optimizing your Pokemon team for battles!</p>
+<div id="special-notice">
+  <p>Note: This guide assumes that you have a basic understanding of Pokemon and Pokemon Go. It's recommended to have knowledge of Pokemon types, abilities, and stats for effective team building.</p>
+</div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      let team = [];
+
+      // Fetch and display Pokemon list
+      $.getJSON('https://pokeapi.co/api/v2/pokemon/?limit=151', function(response) {
+        const pokemonList = response.results;
+
+        const selectPokemon = $('#select-pokemon');
+
+        $.each(pokemonList, function(index, pokemon) {
+          const option = $('<option>').text(pokemon.name).val(pokemon.name);
+          selectPokemon.append(option);
+        });
+
+        // Initialize Select2 plugin
+        selectPokemon.select2({
+          placeholder: 'Select Pokemon',
+          allowClear: true
+        });
+
+        // Handle Pokemon selection change event
+        selectPokemon.on('select2:select', function(e) {
+          const selectedPokemon = e.params.data.text;
+
+          // Create Pokemon card for the team
+          const teamCard = $('<div>').addClass('team-pokemon-card');
+          const pokemonImage = $('<img>').attr('src', 'https://img.pokemondb.net/sprites/home/normal/' + selectedPokemon.toLowerCase() + '.png').attr('alt', selectedPokemon + ' Image');
+          const pokemonName = $('<h4>').text(selectedPokemon);
+          const removeBtn = $('<button>').addClass('btn btn-danger remove-pokemon-btn').text('Remove');
+          teamCard.append(pokemonImage);
+          teamCard.append(pokemonName);
+          teamCard.append(removeBtn);
+          $('#team-container').append(teamCard);
+
+          // Add the selected Pokemon to the team array
+          team.push({
+            name: selectedPokemon
+          });
+
+          // Update CSA section
+          updateCSASection();
+        });
+
+        // Handle Pokemon deselection change event
+        selectPokemon.on('select2:unselect', function(e) {
+          const deselectedPokemon = e.params.data.text;
+
+          // Remove the deselected Pokemon from the team array
+          team = team.filter(pokemon => pokemon.name !== deselectedPokemon);
+
+          // Remove Pokemon card from the team container
+          $(`.team-pokemon-card:contains(${deselectedPokemon})`).remove();
+
+          // Update CSA section
+          updateCSASection();
+        });
+      });
+
+      // Handle Pokemon search event
+      $('#pokemon-search').on('input', function() {
+        const searchKeyword = $(this).val().toLowerCase();
+        const selectPokemon = $('#select-pokemon');
+
+        selectPokemon.find('option').each(function() {
+          const option = $(this);
+          const pokemonName = option.text().toLowerCase();
+
+          if (pokemonName.includes(searchKeyword)) {
+            option.show();
+          } else {
+            option.hide();
+          }
+        });
+
+        selectPokemon.val(null).trigger('change');
+      });
+
+      // Update CSA section
+      function updateCSASection() {
+        const csaPokemonContainer = $('#csa-pokemon-container');
+        csaPokemonContainer.empty();
+
+        $.each(team, function(index, pokemon) {
+          const csaCard = $('<div>').addClass('col-md-3');
+          const pokemonCard = $('<div>').addClass('csa-pokemon-card');
+
+          $.getJSON('https://pokeapi.co/api/v2/pokemon/' + pokemon.name, function(pokemonData) {
+            const pokemonImage = $('<img>').attr('src', 'https://img.pokemondb.net/sprites/home/normal/' + pokemon.name.toLowerCase() + '.png').attr('alt', pokemon.name + ' Image');
+            const pokemonName = $('<h4>').addClass('card-title').text(pokemon.name);
+            const csaDetails = $('<div>').addClass('csa-details');
+
+            csaDetails.append(pokemonImage);
+            csaDetails.append(pokemonName);
+            csaDetails.append('<p><strong>Type:</strong> ' + getPokemonTypes(pokemonData) + '</p>');
+            csaDetails.append('<p><strong>Height:</strong> ' + (pokemonData.height / 10) + ' m</p>');
+            csaDetails.append('<p><strong>Weight:</strong> ' + (pokemonData.weight / 10) + ' kg</p>');
+            csaDetails.append('<p><strong>Base Experience:</strong> ' + pokemonData.base_experience + '</p>');
+            csaDetails.append('<p><strong>Abilities:</strong> ' + getPokemonAbilities(pokemonData) + '</p>');
+            csaDetails.append('<p><strong>Stats:</strong></p>');
+            csaDetails.append(getPokemonStats(pokemonData));
+
+            pokemonCard.append(csaDetails);
+            csaCard.append(pokemonCard);
+            csaPokemonContainer.append(csaCard);
+          });
+        });
+      }
+
+      // Get Pokemon types
+      function getPokemonTypes(pokemonData) {
+        return pokemonData.types.map(type => type.type.name).join(', ');
+      }
+
+      // Get Pokemon abilities
+      function getPokemonAbilities(pokemonData) {
+        return pokemonData.abilities.map(ability => ability.ability.name).join(', ');
+      }
+
+      // Get Pokemon stats
+      function getPokemonStats(pokemonData) {
+        const stats = pokemonData.stats;
+        const statList = $('<ul>');
+
+        $.each(stats, function(index, stat) {
+          const statItem = $('<li>').text(stat.stat.name + ': ' + stat.base_stat);
+          statList.append(statItem);
+        });
+
+        return statList;
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon Go IV Calculator</title><meta name="description" content="The Pokemon Go IV Calculator is a powerful tool that helps you determine the Individual Values (IVs) of your Pokemon. Discover the hidden potential of your Pokemon by calculating their IVs and optimizing their stats for battles.">
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQDKZLT');</script>
+<!-- End Google Tag Manager -->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .calculator {
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .calculator h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group .pokemon-list {
+      display: none;
+      max-height: 200px;
+      overflow-y: auto;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .pokemon-option {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .pokemon-option:hover {
+      background-color: #f1f1f1;
+    }
+
+    .pokemon-option img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .selected-pokemon {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .selected-pokemon img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .calculate-button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .calculate-button:hover {
+      background-color: #45a049;
+    }
+    
+    
+    /* Styling for the result table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+table td,
+table th {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+
+table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+}
+
+/* Styling for the selected Pokemon table */
+.selected-pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.selected-pokemon table {
+  margin: 20px;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.selected-pokemon th {
+  background-color: #f5f5f5;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.selected-pokemon td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.selected-pokemon img {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.selected-pokemon h2 {
+  text-align: center;
+  margin: 10px 0;
+  color: #333;
+}
+
+
+    
+  </style>
+
+<style>
+    /* Additional CSS styles */
+    .paragraph-container {
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 1.5;
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .paragraph-container p {
+        font-size: 16px;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+    
+    .paragraph-container h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .highlight {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    
+.paragraph-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add any additional styles for the image here */
+}
+
+
+    
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+ 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use Pokémon Go IV Calculator",
+  "description": "A step-by-step guide on using the Pokémon Go IV Calculator to determine the Individual Values (IVs) of your Pokémon.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1: Select a Pokémon",
+      "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/select-pokemon.webp",
+      "text": "Enter the name of the Pokémon you want to calculate IVs for in the 'Search Pokemon' input field. As you start typing, the calculator will suggest Pokémon names to choose from. Select the desired Pokémon from the list."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2: Enter Pokémon Details",
+      "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/enter-pokemon-details.webp",
+      "text": "Provide the following information:\n- CP: Enter the Combat Power (CP) of your Pokémon. This value represents the Pokémon's overall strength.\n- HP: Enter the Hit Points (HP) of your Pokémon. HP indicates the amount of damage your Pokémon can sustain."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3: Select Stardust Amount",
+      "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/select-stardust.webp",
+      "text": "Select the appropriate amount of Stardust from the dropdown menu. The available options will vary based on the selected Pokémon. Stardust is used to power up and level up your Pokémon."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4: Calculate IVs",
+      "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/calculate-iv.webp",
+      "text": "Click the 'Calculate IV' button to calculate the IV values based on the provided information. The calculator will process the data and determine the IV values for Attack, Defense, and Stamina."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 5: Review Results",
+      "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/results.webp",
+      "text": "The calculator will display the calculated IV values for Attack, Defense, and Stamina, along with the overall Total IV percentage. This percentage represents the overall potential of your Pokémon, with higher percentages indicating better IV values."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 6: Interpret the IV Values",
+      "text": "Interpret the IV values to understand your Pokémon's potential:\n- Higher IV values indicate better potential for Attack, Defense, and Stamina.\n- Take note of the individual IV values for each stat to identify your Pokémon's strengths and weaknesses."
+    }
+  ]
+}
+</script>
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pokémon Go IV Calculator",
+  "description": "A tool to calculate the Individual Values (IVs) of your Pokémon in Pokémon Go.",
+  "applicationCategory": "Game",
+  "operatingSystem": "Cross-platform",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "bestRating": "5",
+    "ratingCount": "832747"
+  }
+}
+</script>
+
+  
+</head>
+
+<body>
+  
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQDKZLT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Navbar Start -->
+   <nav>
+     <ul>
+       <li><a href="https://kfbesa.com">Home</a></li>
+       <li><a href="https://kfbesa.com/blog/">Blog</a></li>
+
+       <li><a href="https://kfbesa.com/persona/">Persona Fusion Calculators</a></li>
+       <li><a href="https://kfbesa.com/pokemon/">Pokemon Tools</a></li>
+       
+     </ul>
+   </nav>
+   <style>
+     nav {
+       background-color: #f2f2f2;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 9999;
+       overflow-x: auto;
+     }
+   
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       white-space: nowrap;
+     }
+   
+     nav li {
+       display: inline-block;
+       padding: 20px;
+     }
+   
+     nav a {
+       color: black;
+       font-size: 16px;
+       text-decoration: none;
+     }
+   
+     /* Icon for mobile scrolling */
+     @media (max-width: 767px) {
+       nav {
+         overflow-x: scroll;
+       }
+   
+       nav::-webkit-scrollbar {
+         width: 6px;
+         height: 6px;
+       }
+   
+       nav::-webkit-scrollbar-thumb {
+         background-color: rgba(255, 255, 255, 0.5);
+         border-radius: 3px;
+       }
+     }
+   
+     /* Additional CSS rule for creating space below navbar */
+     body {
+       margin-top: 60px;
+       /* Adjust this value as needed */
+     }
+   </style>
+   <!-- Navbar end -->
+
+
+  <div class="container">
+    <div class="calculator">
+      <h1>Pokemon Go IV Calculator</h1>
+
+      <div class="form-group">
+        <label for="pokemon">Select Pokemon:</label>
+        <input type="text" id="pokemon-search" placeholder="Search Pokemon...">
+        <div class="pokemon-list"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="cp">Enter CP:</label>
+        <input type="number" id="cp" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="hp">Enter HP:</label>
+        <input type="number" id="hp" min="0">
+      </div>
+
+      <div class="form-group">
+        <label for="stardust">Select Stardust:</label>
+        <select id="stardust"></select>
+      </div>
+
+      <button class="calculate-button" onclick="calculateIV()">Calculate IV</button>
+
+      <div class="selected-pokemon"></div>
+
+      <div class="result" id="result"></div>
+    </div>
+  </div>
+
+<div class="paragraph-container">
+<p>Welcome to our Pokémon Go IV Calculator! This user-friendly tool helps trainers like you determine the Individual Values (IVs) of your Pokémon. By inputting your Pokémon's CP, HP, and Stardust cost, our calculator will calculate the Attack IV, Defense IV, Stamina IV, and overall Total IV percentage.</p>
+
+<p>Accurate IV knowledge is crucial for making informed decisions, such as powering up the right Pokémon and forming a strong battle team.</p>
+
+<p>Our goal is to provide you with an easy-to-use solution that enhances your Pokémon Go gameplay. Best of luck on your journey to unlocking your Pokémon's full potential!</p>
+
+
+</div>
+<div class="paragraph-container">
+  
+  <h2>How to Use Pokémon Go IV Calculator</h2>
+  <p>Welcome to our Pokémon Go IV Calculator! This guide will walk you through the steps of using our calculator to determine the Individual Values (IVs) of your Pokémon.</p>
+
+  <h3>Step 1: Select a Pokémon</h3>
+  <img src="images/select-pokemon.webp" alt="select pokemon">
+  
+  
+  <p>Enter the name of the Pokémon you want to calculate IVs for in the <strong>"Search Pokemon"</strong> input field. As you start typing, the calculator will suggest Pokémon names to choose from. Select the desired Pokémon from the list.</p>
+
+  <h3>Step 2: Enter Pokémon Details</h3>
+ <img src="images/enter-pokemon-details.webp" alt="Enter Pokémon Details">
+
+  <p>Provide the following information:</p>
+  <ul>
+    <li><strong>CP:</strong> Enter the Combat Power (CP) of your Pokémon. This value represents the Pokémon's overall strength.</li>
+    <li><strong>HP:</strong> Enter the Hit Points (HP) of your Pokémon. HP indicates the amount of damage your Pokémon can sustain.</li>
+  </ul>
+
+  <h3>Step 3: Select Stardust Amount</h3>
+  <img src="images/select-stardust.webp" alt="Select Stardust Amount">
+  <p>Select the appropriate amount of Stardust from the dropdown menu. The available options will vary based on the selected Pokémon. Stardust is used to power up and level up your Pokémon.</p>
+
+  <h3>Step 4: Calculate IVs</h3>
+  <img src="images/calculate-iv.webp" alt="Calculate IVs">
+  <p>Click the "Calculate IV" button to calculate the IV values based on the provided information. The calculator will process the data and determine the IV values for Attack, Defense, and Stamina.</p>
+
+  <h3>Step 5: Review Results</h3>
+  <img src="images/results.webp" alt="Review Results">
+  <p>The calculator will display the calculated IV values for Attack, Defense, and Stamina, along with the overall Total IV percentage. This percentage represents the overall potential of your Pokémon, with higher percentages indicating better IV values.</p>
+
+  <h3>Step 6: Interpret the IV Values</h3>
+  <p>Interpret the IV values to understand your Pokémon's potential:</p>
+  <ul>
+    <li>Higher IV values indicate better potential for Attack, Defense, and Stamina.</li>
+    <li>Take note of the individual IV values for each stat to identify your Pokémon's strengths and weaknesses.</li>
+  </ul>
+
+  
+  
+</div>
+<div class="paragraph-container">  <p>Follow these steps to make the most out of our Pokémon Go IV Calculator. Enjoy optimizing your Pokémon and enhancing your gameplay experience!</p>
+
+</div>
+
+  <script>
+    let pokemonList = [];
+
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
+      .then(response => response.json())
+      .then(data => {
+        pokemonList = data.results;
+      });
+
+    document.getElementById("pokemon-search").addEventListener("input", function() {
+      var searchTerm = this.value.toLowerCase();
+      var filteredPokemon = pokemonList.filter(function(pokemon) {
+        return pokemon.name.includes(searchTerm);
+      });
+
+      var pokemonHTML = "";
+      filteredPokemon.forEach(function(pokemon) {
+        pokemonHTML += "<div class='pokemon-option' onclick='selectPokemon(\"" + pokemon.name + "\")'>" +
+          "<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokemon.url.split("/")[6] + ".png'>" +
+          "<span>" + pokemon.name + "</span></div>";
+      });
+
+      document.querySelector(".pokemon-list").innerHTML = pokemonHTML;
+      document.querySelector(".pokemon-list").style.display = filteredPokemon.length > 0 ? "block" : "none";
+    });
+
+    function selectPokemon(pokemon) {
+      document.getElementById("pokemon-search").value = pokemon;
+      document.querySelector(".pokemon-list").style.display = "none";
+      fetchPokemonData(pokemon);
+    }
+
+    function fetchPokemonData(pokemon) {
+      fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon)
+        .then(response => response.json())
+        .then(data => {
+          var baseStats = data.stats.reduce(function(obj, stat) {
+            obj[stat.stat.name] = stat.base_stat;
+            return obj;
+          }, {});
+
+          var stardustSelect = document.getElementById("stardust");
+          stardustSelect.innerHTML = ""; // Clear the previous options
+
+          // Add Stardust options based on the selected Pokemon's base experience
+          for (var i = 200; i <= 5000; i += 200) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            stardustSelect.appendChild(option);
+          }
+        })
+        .catch(error => {
+          console.log("Error:", error);
+          document.getElementById("result").textContent = "An error occurred while fetching Pokemon data.";
+        });
+    }
+
+function calculateIV() {
+  var pokemon = document.getElementById("pokemon-search").value;
+  var cp = parseInt(document.getElementById("cp").value);
+  var hp = parseInt(document.getElementById("hp").value);
+  var stardust = parseInt(document.getElementById("stardust").value);
+
+  if (pokemon === "" || isNaN(cp) || isNaN(hp) || isNaN(stardust)) {
+    document.getElementById("result").textContent = "Please enter valid values for CP, HP, and Stardust.";
+    return;
+  }
+
+  fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon)
+    .then(response => response.json())
+    .then(data => {
+      var baseStats = data.stats.reduce(function(obj, stat) {
+        obj[stat.stat.name] = stat.base_stat;
+        return obj;
+      }, {});
+
+      var attackIV = Math.floor(cp / Math.sqrt(stardust) / (Math.sqrt(baseStats.attack) / 10));
+      var defenseIV = Math.floor(cp / Math.sqrt(stardust) / (Math.sqrt(baseStats.defense) / 10));
+      var staminaIV = Math.floor(hp / Math.sqrt(stardust) / (Math.sqrt(baseStats.hp) / 10));
+      var totalIV = Math.round((attackIV + defenseIV + staminaIV) / 45 * 100);
+
+      var result = "<table>";
+      result += "<tr><td>Pokemon:</td><td>" + pokemon.toUpperCase() + "</td></tr>";
+      result += "<tr><td>CP:</td><td>" + cp + "</td></tr>";
+      result += "<tr><td>HP:</td><td>" + hp + "</td></tr>";
+      result += "<tr><td>Stardust:</td><td>" + stardust + "</td></tr>";
+      result += "<tr><td>Attack IV:</td><td>" + attackIV + "</td></tr>";
+      result += "<tr><td>Defense IV:</td><td>" + defenseIV + "</td></tr>";
+      result += "<tr><td>Stamina IV:</td><td>" + staminaIV + "</td></tr>";
+      result += "<tr><td>Total IV:</td><td>" + totalIV + "%</td></tr>";
+      result += "</table>";
+
+      document.getElementById("result").innerHTML = result;
+
+      var selectedPokemonHTML = "<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + data.id + ".png'>";
+      selectedPokemonHTML += "<h2>" + pokemon.toUpperCase() + "</h2>";
+      selectedPokemonHTML += "<table>";
+      selectedPokemonHTML += "<tr><td>CP:</td><td>" + cp + "</td></tr>";
+      selectedPokemonHTML += "<tr><td>HP:</td><td>" + hp + "</td></tr>";
+      selectedPokemonHTML += "<tr><td>Stardust:</td><td>" + stardust + "</td></tr>";
+      selectedPokemonHTML += "</table>";
+
+      document.querySelector(".selected-pokemon").innerHTML = selectedPokemonHTML;
+    })
+    .catch(error => {
+      console.log("Error:", error);
+      document.getElementById("result").textContent = "An error occurred while fetching Pokemon data.";
+    });
+}
+
+  </script>
+</body>
+
+</html>

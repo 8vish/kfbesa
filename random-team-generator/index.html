@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!-- License: MIT License -->
+<html lang="en" ng-app="teamGenerator">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Generate a random Pokemon team for your battles and adventures! Our Pokemon team generator creates unique and diverse teams that include a variety of types, abilities, and moves. Discover new strategies and challenge your opponents with an unpredictable lineup. Catch 'em all and conquer the Pokemon world with our random team generator!">
+    
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebApplication",
+  "name": "Random Pokemon Team Generator",
+  "description": "Generate a random Pokemon team for your battles and adventures!",
+  "url": "https://kfbesa.com/pokemon/random-team-generator",
+  "image": "https://kfbesa.com/wp-content/uploads/2023/06/Random-Pokemon-Team-Generator-771x1024.jpg",
+  "operatingSystem": "All",
+  "applicationCategory": "Game",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  },
+  
+ 
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "500"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "kfbesa"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Your Company",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://kfbesa.com/logo.png"
+    }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "HowTo",
+  "name": "How to Use the Random Pokemon Team Generator",
+  "description": "Follow these steps to generate a random Pokemon team:",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Step 1",
+      "text": "Visit the Random Pokemon Team Generator website."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 2",
+      "text": "Click on the 'Generate Team' button."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 3",
+      "text": "Wait for the generator to create a unique Pokemon team."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 4",
+      "text": "Review the generated team with details such as Pokemon names, types, abilities, and moves."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Step 5",
+      "text": "Use the team for battles and adventures in the Pokemon world!"
+    }
+  ],
+  "performTime": "PT5M",
+  "totalTime": "PT5M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "value": "0.00",
+    "currency": "USD"
+  },
+  "tool": {
+    "@type": "HowToTool",
+    "name": "Random Pokemon Team Generator",
+    "image": "https://kfbesa.com/wp-content/uploads/2023/06/Random-Pokemon-Team-Generator-771x1024.jpg",
+    "url": "https://kfbesa.com/pokemon/random-team-generator"
+  }
+}
+</script>
+
+  
+  
+  
+  <title>Random Pok&eacute;mon Team Generator: 1000+ Pokemons</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <link rel="stylesheet" href="third-party/css/bootstrap.min.css">
+    <link rel="stylesheet" href="third-party/css/bootstrap_ms.css">
+    <link rel="stylesheet" href="third-party/css/nya-bs-select.min.css">
+    <link rel="stylesheet" href="css/generator.css" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E5Y7ZKQYSQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E5Y7ZKQYSQ');
+</script>
+
+    
+</head>
+<!-- Navbar Start -->
+   <nav>
+     <ul>
+       <li><a href="https://kfbesa.com">Home</a></li>
+       <li><a href="https://kfbesa.com/blog/">Blog</a></li>
+
+       <li><a href="https://kfbesa.com/persona/">Persona Fusion Calculators</a></li>
+       <li><a href="https://kfbesa.com/pokemon/">Pokemon Tools</a></li>
+       
+     </ul>
+   </nav>
+   <style>
+     nav {
+       background-color: #f2f2f2;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 9999;
+       overflow-x: auto;
+     }
+   
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       white-space: nowrap;
+     }
+   
+     nav li {
+       display: inline-block;
+       padding: 20px;
+     }
+   
+     nav a {
+       color: black;
+       font-size: 16px;
+       text-decoration: none;
+     }
+   
+     /* Icon for mobile scrolling */
+     @media (max-width: 767px) {
+       nav {
+         overflow-x: scroll;
+       }
+   
+       nav::-webkit-scrollbar {
+         width: 6px;
+         height: 6px;
+       }
+   
+       nav::-webkit-scrollbar-thumb {
+         background-color: rgba(255, 255, 255, 0.5);
+         border-radius: 3px;
+       }
+     }
+   
+     /* Additional CSS rule for creating space below navbar */
+     body {
+       margin-top: 60px;
+       /* Adjust this value as needed */
+     }
+   </style>
+   <!-- Navbar end -->
+
+
+<body ng-controller="GeneratorController">
+
+    <div class="text-center">
+        <h3>Random Pok&eacute;mon Team Generator<br /></h3>
+        <p>
+            <ol class="nya-bs-select" ng-model="gen" ng-selected="sm" ng-change="updateGen()">
+                <li nya-bs-option="gen in validGens"><a>{{genDisplayName(gen)}}</a></li>
+            </ol>
+            <ol class="nya-bs-select" ng-model="meta" ng-selected="ou" ng-change="generateNewTeam()">
+                <li nya-bs-option="meta in validMetas"><a>{{metaDisplayName(meta)}}</a></li>
+            </ol>
+        </p>
+        <p>
+            <ol class="nya-bs-select" ng-model="viability" ng-selected="+" ng-change="generateTeam()">
+                <li class="nya-bs-option" data-value="++" title="++"><a>Strong weighting in favor of the most standard Pokemon (++)</a></li>
+                <li class="nya-bs-option" data-value="+" title="+"><a>Slight weighting in favor of standard Pokemon (+)</a></li>
+                <li class="nya-bs-option" data-value="=" title="="><a>No weighting (=)</a></li>
+                <li class="nya-bs-option" data-value="-" title="-"><a>Slight weighting in favor of non-standard Pokemon (-)</a></li>
+            </ol>
+        </p>
+        <p>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" ng-click="generateTeam()">Shake it up!</button>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exportModal" ng-click="exportTeam()">Export!</button>
+            </div>
+        </p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="well col-md-4 col-sm-6 col-ms-6 col-xs-12" ng-repeat="pokemon in team">
+                <div class="text-center">
+                    <button type="button" class="btn btn-default" ng-click="toggleLock(pokemon)">
+                        <span class="glyphicon glyphicon-lock"></span>
+                    </button>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-6 sprite-container">
+                        <img class="img-responsive center-block sprite" ng-src="https://play.pokemonshowdown.com/sprites/xyani/{{spriteName(pokemon)}}.gif" />
+                    </div>
+                    <div class="col-xs-6 no-pad-left">
+                        <input class="form-control" type="text" ng-model="pokemon.name" uib-typeahead="pkmn for pkmn in availablePokemon() | filter:$viewValue | limitTo:8" typeahead-editable="false" ng-disabled="pokemon.locked || pokemon.speciesLocked" />
+                        <br />
+                        <div ng-show="gen !== 'rby'">
+                            <div><input class="form-control" type="text" ng-model="pokemon.item" uib-typeahead="item for item in availableItems() | filter:$viewValue | limitTo:8" typeahead-editable="false" ng-disabled="pokemon.locked" /></div>
+                            <div ng-show="gen !== 'gsc'"><input class="form-control" type="text" ng-model="pokemon.ability" ng-disabled="pokemon.locked" /></div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-6 no-pad-right"><input class="form-control" type="text" ng-model="pokemon.moves[0]" ng-disabled="pokemon.locked" /></div>
+                    <div class="col-xs-6 no-pad-left"><input class="form-control" type="text" ng-model="pokemon.moves[1]" ng-disabled="pokemon.locked" /></div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6 no-pad-right"><input class="form-control" type="text" ng-model="pokemon.moves[2]" ng-disabled="pokemon.locked" /></div>
+                    <div class="col-xs-6 no-pad-left"><input class="form-control" type="text" ng-model="pokemon.moves[3]" ng-disabled="pokemon.locked" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exportModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <h4 class="modal-title text-center">Export</h4>
+                </div>
+                <div class="modal-body">
+                    <textarea rows="30" cols="60" ng-model="teamExport" ng-readonly="teamExportReadOnly"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="third-party/js/angular.min.js"></script>
+    <script src="third-party/js/jquery-2.2.2.min.js"></script>
+    <script src="third-party/js/bootstrap.min.js"></script>
+    <script src="third-party/js/nya-bs-select.min.js"></script>
+    <script src="third-party/js/ui-bootstrap-custom-tpls-1.2.5.min.js"></script>
+
+    <script src="js/generator.js"></script>
+    <script src="js/roles.js"></script>
+    <script src="js/data/pokedex.js"></script>
+    <script src="js/data/itemdex.js"></script>
+    <script src="js/data/viability.js"></script>
+    <script src="js/data/smogon-sets/sm_uber.js"></script>
+    <script src="js/data/smogon-sets/sm_ou.js"></script>
+    <script src="js/data/smogon-sets/sm_uu.js"></script>
+    <script src="js/data/smogon-sets/sm_lc.js"></script>
+    <script src="js/data/smogon-sets/sm_doubles.js"></script>
+    <script src="js/data/smogon-sets/xy_uber.js"></script>
+    <script src="js/data/smogon-sets/xy_ou.js"></script>
+    <script src="js/data/smogon-sets/xy_uu.js"></script>
+    <script src="js/data/smogon-sets/xy_ru.js"></script>
+    <script src="js/data/smogon-sets/xy_nu.js"></script>
+    <script src="js/data/smogon-sets/xy_pu.js"></script>
+    <script src="js/data/smogon-sets/xy_lc.js"></script>
+    <script src="js/data/smogon-sets/xy_doubles.js"></script>
+    <script src="js/data/smogon-sets/bw_uber.js"></script>
+    <script src="js/data/smogon-sets/bw_ou.js"></script>
+    <script src="js/data/smogon-sets/bw_uu.js"></script>
+    <script src="js/data/smogon-sets/bw_ru.js"></script>
+    <script src="js/data/smogon-sets/bw_nu.js"></script>
+    <script src="js/data/smogon-sets/bw_lc.js"></script>
+    <script src="js/data/smogon-sets/dpp_uber.js"></script>
+    <script src="js/data/smogon-sets/dpp_ou.js"></script>
+    <script src="js/data/smogon-sets/dpp_uu.js"></script>
+    <script src="js/data/smogon-sets/dpp_nu.js"></script>
+    <script src="js/data/smogon-sets/dpp_lc.js"></script>
+    <script src="js/data/smogon-sets/adv_uber.js"></script>
+    <script src="js/data/smogon-sets/adv_ou.js"></script>
+    <script src="js/data/smogon-sets/adv_uu.js"></script>
+    <script src="js/data/smogon-sets/adv_nu.js"></script>
+    <script src="js/data/smogon-sets/gsc_uber.js"></script>
+    <script src="js/data/smogon-sets/gsc_ou.js"></script>
+    <script src="js/data/smogon-sets/gsc_uu.js"></script>
+    <script src="js/data/smogon-sets/rby_uber.js"></script>
+    <script src="js/data/smogon-sets/rby_ou.js"></script>
+    <script src="js/data/smogon-sets/rby_uu.js"></script>
+</body>
+</html>

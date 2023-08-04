@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Pok&eacute;mon Sun &amp; Moon Team Builder</title>
+    <meta name="author" content="kfbesa"/>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQDKZLT');</script>
+<!-- End Google Tag Manager -->
+<meta name="description" content="Plan and build your perfect Pokémon team for the Sun & Moon games. This tool allows you to use filters to search for Pokémon, teach them different moves, and check type coverage charts. You can also share your team with others and even import data from Pokémon Showdown."/>
+
+    <meta name="Resource-type" content="Document"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <link rel="stylesheet" type="text/css" href="css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/positions.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/typechart.js"></script>
+    <script type="text/javascript" src="js/moves.js"></script>
+    <script type="text/javascript" src="js/learnsets.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Pok&eacute;mon Sun &amp; Moon Team Builder" />
+<meta property="og:description" content="Plan and build your perfect Pokémon team for the Sun & Moon games. Use filters to find Pokémon, teach them moves, and check type coverage charts. Share your team with others, and even import from Pokémon Showdown."/>
+<script type="application/ld+json">
+     {
+       "@context": "http://schema.org",
+       "@type": "WebApplication",
+       "name": "Pokémon Sun & Moon Team Builder",
+       "description": "Build and rate your Pokémon teams for Sun & Moon",
+       "applicationCategory": "Game",
+       "aggregateRating": {
+         "@type": "AggregateRating",
+         "ratingValue": "4.9",
+         "ratingCount": "9493270"
+       }
+     }
+   </script>
+    <meta property="og:image"         content="favicon-196x196.png" />
+</head>
+
+<body onload="initialize()">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQDKZLT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<section class="hero is-info">
+    <div class="hero-body">
+        <div class="container">
+          
+
+
+          
+          
+          
+          
+            <nav class="level">
+                <div class="level-left">
+                    <div class="level-item" style="width:218px;">
+                        <a href="https://kfbesa.com/pokemon/"><figure class="image is-logo">
+                            <img src="data/pokemon_logo.png" style="height:80px;width:218px;">
+                        </figure></a>
+                    </div>
+                    <div class="level-item">
+                        <h1 class="title"><strong>Pok&eacute;mon Sun &amp; Moon Team Builder</strong></h1>
+                    </div>
+                </div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <h2 class="subtitle">Designed for Pok&eacute;mon Sun &amp; Moon</h2>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-5">
+                <h2 class="subtitle"><strong>Selected Pok&eacute;mon</strong></h2>
+                <div id="sp_box_0" class="box">
+                </div>
+                <div id="sp_box_1" class="box">
+                </div>
+                <div id="sp_box_2" class="box">
+                </div>
+                <div id="sp_box_3" class="box">
+                </div>
+                <div id="sp_box_4" class="box">
+                </div>
+                <div id="sp_box_5" class="box">
+                </div>
+                <h2 class="subtitle"><strong>Type Weaknesses</strong></h2>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tw_item_Bug" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Bug">Bug</span><br><strong id="tw_num_Bug">x 0</strong>
+                    </div>
+                    <div id="tw_item_Dark" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Dark">Dark</span><br><strong id="tw_num_Dark">x 0</strong>
+                    </div>
+                    <div id="tw_item_Dragon" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Dragon">Dragon</span><br><strong id="tw_num_Dragon">x 0</strong>
+                    </div>
+                    <div id="tw_item_Electric" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Electric">Electric</span><br><strong id="tw_num_Electric">x 0</strong>
+                    </div>
+                    <div id="tw_item_Fairy" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fairy">Fairy</span><br><strong id="tw_num_Fairy">x 0</strong>
+                    </div>
+                    <div id="tw_item_Fighting" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fighting">Fighting</span><br><strong id="tw_num_Fighting">x 0</strong>
+                    </div>
+                </div>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tw_item_Fire" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fire">Fire</span><br><strong id="tw_num_Fire">x 0</strong>
+                    </div>
+                    <div id="tw_item_Flying" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Flying">Flying</span><br><strong id="tw_num_Flying">x 0</strong>
+                    </div>
+                    <div id="tw_item_Ghost" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ghost">Ghost</span><br><strong id="tw_num_Ghost">x 0</strong>
+                    </div>
+                    <div id="tw_item_Grass" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Grass">Grass</span><br><strong id="tw_num_Grass">x 0</strong>
+                    </div>
+                    <div id="tw_item_Ground" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ground">Ground</span><br><strong id="tw_num_Ground">x 0</strong>
+                    </div>
+                    <div id="tw_item_Ice" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ice">Ice</span><br><strong id="tw_num_Ice">x 0</strong>
+                    </div>
+                </div>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tw_item_Normal" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Normal">Normal</span><br><strong id="tw_num_Normal">x 0</strong>
+                    </div>
+                    <div id="tw_item_Poison" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Poison">Poison</span><br><strong id="tw_num_Poison">x 0</strong>
+                    </div>
+                    <div id="tw_item_Psychic" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Psychic">Psychic</span><br><strong id="tw_num_Psychic">x 0</strong>
+                    </div>
+                    <div id="tw_item_Rock" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Rock">Rock</span><br><strong id="tw_num_Rock">x 0</strong>
+                    </div>
+                    <div id="tw_item_Steel" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Steel">Steel</span><br><strong id="tw_num_Steel">x 0</strong>
+                    </div>
+                    <div id="tw_item_Water" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Water">Water</span><br><strong id="tw_num_Water">x 0</strong>
+                    </div>
+                </div>
+                <h2 class="subtitle"><strong>Type Resistances and Immunities</strong></h2>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tr_item_Bug" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Bug">Bug</span><br><strong id="tr_num_Bug">x 0</strong>
+                    </div>
+                    <div id="tr_item_Dark" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Dark">Dark</span><br><strong id="tr_num_Dark">x 0</strong>
+                    </div>
+                    <div id="tr_item_Dragon" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Dragon">Dragon</span><br><strong id="tr_num_Dragon">x 0</strong>
+                    </div>
+                    <div id="tr_item_Electric" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Electric">Electric</span><br><strong id="tr_num_Electric">x 0</strong>
+                    </div>
+                    <div id="tr_item_Fairy" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fairy">Fairy</span><br><strong id="tr_num_Fairy">x 0</strong>
+                    </div>
+                    <div id="tr_item_Fighting" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fighting">Fighting</span><br><strong id="tr_num_Fighting">x 0</strong>
+                    </div>
+                </div>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tr_item_Fire" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fire">Fire</span><br><strong id="tr_num_Fire">x 0</strong>
+                    </div>
+                    <div id="tr_item_Flying" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Flying">Flying</span><br><strong id="tr_num_Flying">x 0</strong>
+                    </div>
+                    <div id="tr_item_Ghost" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ghost">Ghost</span><br><strong id="tr_num_Ghost">x 0</strong>
+                    </div>
+                    <div id="tr_item_Grass" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Grass">Grass</span><br><strong id="tr_num_Grass">x 0</strong>
+                    </div>
+                    <div id="tr_item_Ground" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ground">Ground</span><br><strong id="tr_num_Ground">x 0</strong>
+                    </div>
+                    <div id="tr_item_Ice" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ice">Ice</span><br><strong id="tr_num_Ice">x 0</strong>
+                    </div>
+                </div>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tr_item_Normal" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Normal">Normal</span><br><strong id="tr_num_Normal">x 0</strong>
+                    </div>
+                    <div id="tr_item_Poison" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Poison">Poison</span><br><strong id="tr_num_Poison">x 0</strong>
+                    </div>
+                    <div id="tr_item_Psychic" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Psychic">Psychic</span><br><strong id="tr_num_Psychic">x 0</strong>
+                    </div>
+                    <div id="tr_item_Rock" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Rock">Rock</span><br><strong id="tr_num_Rock">x 0</strong>
+                    </div>
+                    <div id="tr_item_Steel" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Steel">Steel</span><br><strong id="tr_num_Steel">x 0</strong>
+                    </div>
+                    <div id="tr_item_Water" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Water">Water</span><br><strong id="tr_num_Water">x 0</strong>
+                    </div>
+                </div>
+                <h2 class="subtitle"><strong>Type Coverage</strong></h2>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tc_item_Bug" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Bug">Bug</span><br><strong id="tc_num_Bug">x 0</strong>
+                    </div>
+                    <div id="tc_item_Dark" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Dark">Dark</span><br><strong id="tc_num_Dark">x 0</strong>
+                    </div>
+                    <div id="tc_item_Dragon" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Dragon">Dragon</span><br><strong id="tc_num_Dragon">x 0</strong>
+                    </div>
+                    <div id="tc_item_Electric" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Electric">Electric</span><br><strong id="tc_num_Electric">x 0</strong>
+                    </div>
+                    <div id="tc_item_Fairy" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fairy">Fairy</span><br><strong id="tc_num_Fairy">x 0</strong>
+                    </div>
+                    <div id="tc_item_Fighting" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fighting">Fighting</span><br><strong id="tc_num_Fighting">x 0</strong>
+                    </div>
+                </div>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tc_item_Fire" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Fire">Fire</span><br><strong id="tc_num_Fire">x 0</strong>
+                    </div>
+                    <div id="tc_item_Flying" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Flying">Flying</span><br><strong id="tc_num_Flying">x 0</strong>
+                    </div>
+                    <div id="tc_item_Ghost" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ghost">Ghost</span><br><strong id="tc_num_Ghost">x 0</strong>
+                    </div>
+                    <div id="tc_item_Grass" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Grass">Grass</span><br><strong id="tc_num_Grass">x 0</strong>
+                    </div>
+                    <div id="tc_item_Ground" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ground">Ground</span><br><strong id="tc_num_Ground">x 0</strong>
+                    </div>
+                    <div id="tc_item_Ice" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Ice">Ice</span><br><strong id="tc_num_Ice">x 0</strong>
+                    </div>
+                </div>
+                <div class="columns is-mobile type_chart_padding">
+                    <div id="tc_item_Normal" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Normal">Normal</span><br><strong id="tc_num_Normal">x 0</strong>
+                    </div>
+                    <div id="tc_item_Poison" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Poison">Poison</span><br><strong id="tc_num_Poison">x 0</strong>
+                    </div>
+                    <div id="tc_item_Psychic" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Psychic">Psychic</span><br><strong id="tc_num_Psychic">x 0</strong>
+                    </div>
+                    <div id="tc_item_Rock" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Rock">Rock</span><br><strong id="tc_num_Rock">x 0</strong>
+                    </div>
+                    <div id="tc_item_Steel" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Steel">Steel</span><br><strong id="tc_num_Steel">x 0</strong>
+                    </div>
+                    <div id="tc_item_Water" class="column is-2 chart_type_box">
+                        <span class="tag tag_type tag_type_Water">Water</span><br><strong id="tc_num_Water">x 0</strong>
+                    </div>
+                </div>
+                <h2 class="subtitle"><strong>Share Links</strong></h2>
+                <input id="sp_share_link" class="input" type="text" readonly="readonly" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="" onclick="javascript:copyToClipboard(this);">
+                <nav class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p style="padding-top:8px;">Click to copy the link to your clipboard.</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Build and check your Pokémon team" data-show-count="false" style="margin-top:8px;">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                        <div class="level-item">
+                            <div class="fb-share-button" data-layout="button" data-size="large"></div>
+                        </div>
+                    </div>
+                </nav>
+                <h2 class="subtitle"><strong>Import from Pok&eacute;mon Showdown</strong></h2>
+                <p class="control has-addons" style="width: 100%">
+                    <textarea id="sp_import_text" class="input is-expanded" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Paste exported team text"></textarea>
+                    <a href="javascript:importShowdownTeam()" class="button is-success is-outlined select-button">Import</a>
+                </p>
+                <p style="padding-top:8px;">Make sure it is properly formatted. Importing will erase your current team.</p><br>
+            </div>
+
+            <div class="column is-7">
+                <h2 class="subtitle"><strong>Filters</strong></h2>
+                <nav class="level types_row_top">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <input id="pp_filter_name" class="input" type="text" onkeyup="nameFilterEntered()" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Enter text to filter by name" style="min-width:240px;">
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <div class="level-item">
+                            <label class="checkbox">
+                                <input id="pp_filter_preevos" type="checkbox" onchange="preEvosFilterClicked()"> Complete evolutions only
+                            </label>
+                        </div>
+                        <div class="level-item">
+                            <label class="checkbox">
+                                <input id="pp_filter_nonmegas" type="checkbox" onchange="nonMegasFilterClicked()"> Mega evolutions only
+                            </label>
+                        </div>
+                    </div>
+                </nav>
+                <nav class="level types_row_top">
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input id="pp_filter_gen_1" type="checkbox" onchange="generationFilterClicked(1)" checked> Gen. 1
+                        </label>
+                    </div>
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input id="pp_filter_gen_2" type="checkbox" onchange="generationFilterClicked(2)" checked> Gen. 2
+                        </label>
+                    </div>
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input id="pp_filter_gen_3" type="checkbox" onchange="generationFilterClicked(3)" checked> Gen. 3
+                        </label>
+                    </div>
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input id="pp_filter_gen_4" type="checkbox" onchange="generationFilterClicked(4)" checked> Gen. 4
+                        </label>
+                    </div>
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input id="pp_filter_gen_5" type="checkbox" onchange="generationFilterClicked(5)" checked> Gen. 5
+                        </label>
+                    </div>
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input id="pp_filter_gen_6" type="checkbox" onchange="generationFilterClicked(6)" checked> Gen. 6
+                        </label>
+                    </div>
+                    <div class="level-item">
+                        <label class="checkbox">
+                            <input id="pp_filter_gen_7" type="checkbox" onchange="generationFilterClicked(7)" checked> Gen. 7
+                        </label>
+                    </div>
+                    <a href="javascript:resetFilters()" class="button is-danger select-button">Reset all filters</a>
+                </nav>
+                <nav class="level types_row_top">
+                    <a href="javascript:typeFilterClicked('Bug')"><span id="pp_filter_type_Bug" class="tag tag_type tag_type_button tag_type_Bug">Bug</span></a>
+                    <a href="javascript:typeFilterClicked('Dark')"><span id="pp_filter_type_Dark" class="tag tag_type tag_type_button tag_type_Dark">Dark</span></a>
+                    <a href="javascript:typeFilterClicked('Dragon')"><span id="pp_filter_type_Dragon" class="tag tag_type tag_type_button tag_type_Dragon">Dragon</span></a>
+                    <a href="javascript:typeFilterClicked('Electric')"><span id="pp_filter_type_Electric" class="tag tag_type tag_type_button tag_type_Electric">Electric</span></a>
+                    <a href="javascript:typeFilterClicked('Fairy')"><span id="pp_filter_type_Fairy" class="tag tag_type tag_type_button tag_type_Fairy">Fairy</span></a>
+                    <a href="javascript:typeFilterClicked('Fighting')"><span id="pp_filter_type_Fighting" class="tag tag_type tag_type_button tag_type_Fighting">Fighting</span></a>
+                    <a href="javascript:typeFilterClicked('Fire')"><span id="pp_filter_type_Fire" class="tag tag_type tag_type_button tag_type_Fire">Fire</span></a>
+                    <a href="javascript:typeFilterClicked('Flying')"><span id="pp_filter_type_Flying" class="tag tag_type tag_type_button tag_type_Flying">Flying</span></a>
+                    <a href="javascript:typeFilterClicked('Ghost')"><span id="pp_filter_type_Ghost" class="tag tag_type tag_type_button tag_type_Ghost">Ghost</span></a>
+                    <a href="javascript:disableAllTypes()" class="button is-info is-outlined select-button">Deselect types</a>
+                </nav>
+                <nav class="level">
+                    <a href="javascript:typeFilterClicked('Grass')"><span id="pp_filter_type_Grass" class="tag tag_type tag_type_button tag_type_Grass">Grass</span></a>
+                    <a href="javascript:typeFilterClicked('Ground')"><span id="pp_filter_type_Ground" class="tag tag_type tag_type_button tag_type_Ground">Ground</span></a>
+                    <a href="javascript:typeFilterClicked('Ice')"><span id="pp_filter_type_Ice" class="tag tag_type tag_type_button tag_type_Ice">Ice</span></a>
+                    <a href="javascript:typeFilterClicked('Normal')"><span id="pp_filter_type_Normal" class="tag tag_type tag_type_button tag_type_Normal">Normal</span></a>
+                    <a href="javascript:typeFilterClicked('Poison')"><span id="pp_filter_type_Poison" class="tag tag_type tag_type_button tag_type_Poison">Poison</span></a>
+                    <a href="javascript:typeFilterClicked('Psychic')"><span id="pp_filter_type_Psychic" class="tag tag_type tag_type_button tag_type_Psychic">Psychic</span></a>
+                    <a href="javascript:typeFilterClicked('Rock')"><span id="pp_filter_type_Rock" class="tag tag_type tag_type_button tag_type_Rock">Rock</span></a>
+                    <a href="javascript:typeFilterClicked('Steel')"><span id="pp_filter_type_Steel" class="tag tag_type tag_type_button tag_type_Steel">Steel</span></a>
+                    <a href="javascript:typeFilterClicked('Water')"><span id="pp_filter_type_Water" class="tag tag_type tag_type_button tag_type_Water">Water</span></a>
+                    <div class="onoffswitch">
+                        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="pp_filter_toggle" onchange="typeSwitchToggled()" checked>
+                        <label class="onoffswitch-label" for="pp_filter_toggle">
+                            <span class="onoffswitch-inner"></span>
+                            <span class="onoffswitch-switch"></span>
+                        </label>
+                    </div>
+                </nav>
+                
+                <h2 class="subtitle"><strong>Pok&eacute;mon List</strong></h2>
+                <div id="pp_results">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="content has-text-left">
+              <div>
+    <h2>What is Pokémon Team Builder?</h2>
+    <p>
+        Pokémon Team Builder is an incredibly helpful online tool designed to assist you in planning and constructing a strong and well-balanced Pokémon team. Whether you're playing the game for fun or competing in battles, this tool has got you covered!
+    </p>
+</div>
+
+<div>
+    <h2>Features</h2>
+    <ul>
+        <li>Smart filtering options: Easily search and find the Pokémon you need for your team.</li>
+        <li>Move customization: Add specific attacks and movesets to your Pokémon.</li>
+        <li>Team sharing: Share your carefully crafted team with friends and fellow Pokémon enthusiasts.</li>
+        <li>Team importing: Import teams from other sources to save time and effort.</li>
+        <li>Links to Pokémon information: Access detailed Pokédex entries on <a href="http://www.serebii.net" target="_blank">Serebii</a> for comprehensive Pokémon data.</li>
+        <li>Type Charts: Analyze the balance and coverage of your team, both offensively and defensively.</li>
+        <li>Compatibility: Updated for the 7th generation, ensuring compatibility with the latest Sun & Moon games and the Pokémon Bank update.</li>
+    </ul>
+</div>
+
+<div>
+    <h2>How to Use Pokémon Team Builder</h2>
+    <p>
+        Using Pokémon Team Builder is simple and intuitive. Just follow these steps to get started:
+    </p>
+    <ol>
+        <li>Open the Pokémon Team Builder tool in your web browser.</li>
+        <li>Utilize the smart filtering options to search for specific Pokémon that fit your team strategy.</li>
+        <li>Add attacks and movesets to your Pokémon to enhance their battle capabilities.</li>
+        <li>Explore the Type Charts to ensure your team has a balanced and well-covered lineup.</li>
+        <li>Once satisfied with your team, share it with others by using the team sharing feature.</li>
+        <li>If you already have a team built elsewhere, you can simply import it into the tool for convenience.</li>
+        <li>For additional information about individual Pokémon, click on the provided links to access detailed Pokédex entries on Serebii.</li>
+        <li>Remember, the Pokémon Team Builder is constantly updated, so it remains compatible with the latest Sun & Moon games and the Pokémon Bank update.</li>
+    </ol>
+</div>
+
+                </div>
+            </div>
+       
+        </div>
+    </div>
+</footer>
+
+<div id="sp_box_template" class="box" style="display:none;">
+    <nav class="level types_row_bottom">
+        <div class="level-left">
+            <div class="sp_icon level-item">
+                <i class="image is-40x30 picon_egg"></i>
+            </div>
+            <div class="level-item">
+                <p><strong class="sp_name"></strong></p>
+            </div>
+        </div>
+        <div class="level-right">
+            <div class="sp_type1 level-item">
+            </div>
+            <div class="sp_type2 level-item">
+            </div>
+            <div class="sp_delete level-item">
+            </div>
+        </div>
+    </nav>
+    <nav class="level types_row_top sp_attack_row hidden">
+        <div class="level-item">
+            <span class="sp_attack1_type tag tag_type invisible">Type</span><br>
+        </div>
+        <div class="level-item">
+            <span class="select">
+                <select class="sp_attack1" onchange="attackChanged(this, 'sp_attack1', true);">
+                    <option>-</option>
+                </select>
+          </span>
+        </div>
+        <div class="level-item">
+            <span class="sp_attack2_type tag tag_type invisible">Type</span><br>
+        </div>
+        <div class="level-item">
+            <span class="select">
+                <select class="sp_attack2" onchange="attackChanged(this, 'sp_attack2', true);">
+                    <option>-</option>
+                </select>
+          </span>
+        </div>
+    </nav>
+    <nav class="level types_row_bottom sp_attack_row hidden">
+        <div class="level-item">
+            <span class="sp_attack3_type tag tag_type invisible">Type</span><br>
+        </div>
+        <div class="level-item">
+            <span class="select">
+                <select class="sp_attack3" onchange="attackChanged(this, 'sp_attack3', true);">
+                    <option>-</option>
+                </select>
+          </span>
+        </div>
+        <div class="level-item">
+            <span class="sp_attack4_type tag tag_type invisible">Type</span><br>
+        </div>
+        <div class="level-item">
+            <span class="select">
+                <select class="sp_attack4" onchange="attackChanged(this, 'sp_attack4', true);">
+                    <option>-</option>
+                </select>
+          </span>
+        </div>
+    </nav>
+</div>
+
+<div id="page_notification" class="notification notification-top hidden">
+</div>
+
+</body>
+
+</html>

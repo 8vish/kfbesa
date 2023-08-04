@@ -1,0 +1,307 @@
+.select-button {
+    width: 112px;
+}
+
+textarea {
+  resize: vertical; /* user can resize vertically, but width is fixed */
+}
+
+.notification-top {
+    position: fixed;
+    top: 20px;
+    left: calc(50% - 180px);
+    width: 360px;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.image.is-40x30 {
+  height: 30px;
+  width: 40px;
+}
+
+.image.is-logo {
+    height: 80px;
+    width: 218px;
+}
+
+.tag_type {
+    width: 60px;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.type_chart_padding {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px !important;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.tag_type_button {
+    opacity: 0.4;
+}
+
+.tag_selected {
+    opacity: 1;
+}
+
+.tag_selected:hover {
+    opacity: 0.7;
+}
+
+.types_row_top {
+    margin-bottom: 6px !important;
+}
+
+.types_row_bottom {
+    margin-top: 6px !important;
+}
+
+a.serebii_link, a.serebii_link:visited {
+  color: #4a4a4a;
+}
+
+a.serebii_link:hover, a.serebii_link:visited:hover {
+  color: #363636;
+}
+
+a.serebii_link:not(.icon), a.serebii_link:visited:not(.icon) {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+a.serebii_link:not(.icon):hover, a.serebii_link:visited:not(.icon):hover {
+  border-bottom-color: #00d1b2;
+}
+
+.onoffswitch {
+    position: relative; width: 112px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 38px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 26px; padding: 0; line-height: 26px;
+    font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "OR";
+    padding-left: 29px;
+    background-color: #3273DC; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "AND";
+    padding-right: 29px;
+    background-color: #3273DC; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 26px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 82px;
+    border: 2px solid #999999; border-radius: 38px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+
+.type_info_danger {
+    color: #ff3860;
+}
+
+.chart_type_box {
+    text-align: center;
+}
+
+.tag_type_Bug {
+    background-color: #99cc00;
+    color: white;
+}
+.tag_type_Dark {
+    background-color: #333300;
+    color: white;
+}
+.tag_type_Dragon {
+    background-color: #003399;
+    color: white;
+}
+.tag_type_Electric {
+    background-color: #F0D83C;
+    color: white;
+}
+.tag_type_Fairy {
+    background-color: HotPink;
+    color: white;
+}
+.tag_type_Fighting {
+    background-color: Sienna;
+    color: white;
+}
+.tag_type_Fire {
+    background-color: OrangeRed;
+    color: white;
+}
+.tag_type_Flying {
+    background-color: #6699ff;
+    color: white;
+}
+.tag_type_Ghost {
+    background-color: Indigo;
+    color: white;
+}
+.tag_type_Grass {
+    background-color: #009933;
+    color: white;
+}
+.tag_type_Ground {
+    background-color: Peru;
+    color: white;
+}
+.tag_type_Ice {
+    background-color: LightSkyBlue;
+    color: white;
+}
+.tag_type_Normal {
+    background-color: Silver;
+    color: white;
+}
+.tag_type_Poison {
+    background-color: DarkOrchid;
+    color: white;
+}
+.tag_type_Psychic {
+    background-color: #cc3399;
+    color: white;
+}
+.tag_type_Rock {
+    background-color: Chocolate;
+    color: white;
+}
+.tag_type_Steel {
+    background-color: #4c5967;
+    color: white;
+}
+.tag_type_Water {
+    background-color: DodgerBlue;
+    color: white;
+}
+
+.picons {
+    background: url("../data/icons.png") no-repeat;
+    position: relative;
+}
+
+.picon_egg {
+    background: url("../data/egg.png") no-repeat;
+    background-position: center;
+}
+
+.picon_move {
+    transform: translate(0px, -4px);
+    padding-bottom: 10px;
+}
+
+.picon_border {
+    position: relative;
+}
+.picon_border:after {
+  content:""; 
+  /*background: black; */
+  position: absolute; 
+  bottom: -4px; 
+  left: 0; 
+  height: 2px; 
+  width: 40px;
+}
+
+.picon_border_Bug:after {
+    background: #99cc00;
+}
+.picon_border_Dark:after {
+    background: #333300;
+}
+.picon_border_Dragon:after {
+    background: #003399;
+}
+.picon_border_Electric:after {
+    background: #F0D83C;
+}
+.picon_border_Fairy:after {
+    background: HotPink;
+}
+.picon_border_Fighting:after {
+    background: Sienna;
+}
+.picon_border_Fire:after {
+    background: OrangeRed;
+}
+.picon_border_Flying:after {
+    background: #6699ff;
+}
+.picon_border_Ghost:after {
+    background: Indigo;
+}
+.picon_border_Grass:after {
+    background: #009933;
+}
+.picon_border_Ground:after {
+    background: Peru;
+}
+.picon_border_Ice:after {
+    background: LightSkyBlue;
+}
+.picon_border_Normal:after {
+    background: Silver;
+}
+.picon_border_Poison:after {
+    background: DarkOrchid;
+}
+.picon_border_Psychic:after {
+    background: #cc3399;
+}
+.picon_border_Rock:after {
+    background: Chocolate;
+}
+.picon_border_Steel:after {
+    background: #4c5967;
+}
+.picon_border_Water:after {
+    background: DodgerBlue;
+}

@@ -1,0 +1,1060 @@
+*
+{
+	border: 0;
+	border-color: #839172;
+	border-collapse: collapse;
+	border-style: solid;
+	color: #444444;
+	font-family: "Palatino Linotype", "Book Antiqua", "Palatino", "Serif";
+	font-size: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	vertical-align: top;
+}
+
+#myHighlight {
+  background-color: #ffd700; /* Golden yellow */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Soft shadow effect */
+  font-weight: bold;
+  color: #333333;
+}
+ 
+    
+#Highlight {
+  background-color: lightblue; /* Golden yellow */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Soft shadow effect */
+  font-weight: bold;
+  color: #333333;
+  text-anchor: left;
+}
+
+
+body
+{
+	background-color: #FBFFF7;
+	font-size: 18px;
+	line-height: 1.25em;
+	margin: 0 0 20px;
+}
+#step img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add any additional styles for the image here */
+}
+
+
+ p {
+        font-size: 16px;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+    
+    h1 {
+        font-size: 34px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 2.5rem;
+    }
+    
+
+h2 {
+
+        font-size: 24px;
+
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        line-height: 2.5rem;
+    }
+    
+.separator {
+  border-top: 1px solid #999999;
+  margin: 20px 0;
+}
+
+.separator1 {
+   border-top: 1px solid #999999;
+   margin: 50px 0;
+ }
+
+button
+{
+	background-color: transparent;
+	margin: 0 3px;
+	float: left;
+	font-variant: small-caps;
+}
+
+button:hover
+{
+	box-shadow: 0 0 6px 1px #8cbd52 inset;
+	border-radius: 7px;
+}
+
+div.column
+{
+	background-color: #FCFCF0;
+	display: inline-block;
+	margin: 10px 5px 5px;
+	box-shadow: 1px 1px 3px black;
+}
+
+div.column > h4:first-child span
+{
+	display: inline-block;
+	float: left;
+	font-size: 0.7em;
+	padding: 2px 7px 0;
+	font-weight: normal;
+	font-variant: small-caps;
+}
+
+h3
+{
+	display: inline-block;
+	font-size: 1.3em;
+	text-align: center;
+}
+
+h3.boxArt
+{
+	background-repeat: no-repeat;
+	background-position: 15px 0;
+	height: 31px;/*should be size of image minus top padding*/
+	min-width: 55px;
+	text-shadow: 1px 1px 2px black;
+	font-weight: bold;
+	font-variant: small-caps;
+}
+
+h4
+{
+	background-color: #eaf2ce;
+	font-size: 1.1em;
+	margin: 0 0 2px;
+	padding: 1px 8px 3px;
+	text-align: right;
+	border-width: 0 0 1px;
+}
+
+hr
+{
+	background-color: #000000;
+	height: 1px;
+	margin: 0 0 10px;
+}
+
+img.types
+{
+	margin: 1px 2px 0;
+}
+
+input
+{
+	background-color: #fff;
+	border-style: dotted;
+	padding: 1px 8px 5px;
+}
+
+input.button
+{
+	background-color: #f7f7f7;
+	box-shadow: inset black -1px -1px 2px;
+	font-size: 1.2em;
+	font-variant: small-caps;
+}
+
+input.button:hover
+{
+	background-color: #ebebeb;
+}
+
+/* targets the calculate button */
+input.button:first-of-type
+{
+	font-size: 0.95em;
+	padding: 6px;
+}
+
+label
+{
+	display: inline-block;
+	font-variant: small-caps;
+}
+
+label[for="TRACK"]
+{
+	margin-top: 6px;
+}
+
+label[for='MAX_EXP']
+{
+	margin: 1px 0 0 15px;
+}
+
+select
+{
+	border-width: 0;
+	margin: 3px 0 0 5px;
+	padding: 2px 5px; /* Customize the bullet color */
+}
+
+body {
+  background-color: #f1f1f1;
+  color: #333333;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #444444;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  color: #666666;
+}
+
+ol li {
+  color: #888888;
+}
+
+
+sub
+{
+	font-size: 0.7em;
+}
+
+sup
+{
+	position: relative;
+	top: -0.2em;
+	font-size: 0.7em;
+}
+
+td
+{
+	padding: 4px;
+}
+
+tr.heading td:hover
+{
+	background-color: #F3F3F3;
+}
+
+tr.record:last-of-type
+{
+	border-width: 0 0 0;
+}
+
+#BASE
+{
+	float: right;
+	position: relative;
+	top: -3px;
+}
+
+#CONTAINER
+{
+	display: inline-block;
+	margin: 0 auto;
+	padding: 0 0 3px;
+}
+
+#CURRENT
+{
+	background-image: url('current.png');
+	background-repeat: no-repeat;
+	margin: 0 2px 0 0;
+	padding: 1px;
+}
+
+#LOOKUP
+{
+	margin: 0;
+	width: 100%;
+	border-width: 1px 0 0;
+}
+
+#LOOKUP td
+{
+	width: 15%;
+}
+
+#LOOKUP td.index
+{
+	font-weight: bold;
+	font-variant: small-caps;
+	text-transform: lowercase;
+}
+
+#DV tr:first-child td
+{
+	border-width: 0 0 1px 0;
+}
+
+#EVOLVE
+{
+	margin: 3px 7px 0 0;
+}
+
+#POKEMON tr:first-child td button, #POKEMON tr:first-child td input
+{
+	float: left;
+}
+
+#POKEMON tr:first-child td button
+{
+	margin: 0 0 0 5px;
+}
+
+#POKEMON tr:first-child td label
+{
+	float: left;
+	font-variant: small-caps;
+	font-size: 0.9em;
+	margin-right: 10px;
+}
+
+#POKEMON tr:first-child td label:first-of-type
+{
+	font-variant: normal;
+}
+
+#POKEMON tr:first-child td img
+{
+	float: right;
+}
+
+#REVERT
+{
+	margin: 3px 2px 0 0;
+}
+
+#GUIDE_CONTAINER 
+{
+	width: 75%;
+	text-align: left;
+	margin: 10px auto;
+}
+
+#GUIDE_CONTAINER * 
+{
+	text-align: left;
+}
+
+#GUIDE_CONTAINER h3
+{
+	margin: 0 0 20px;
+}
+
+#GUIDE_CONTAINER span.bold
+{
+	margin: 20px 0 10px;
+	display: inline-block;
+}
+
+#GUIDE_CONTAINER ol
+{
+	width: 90%;
+	margin: 5px auto 10px;
+}
+
+#GUIDE_CONTAINER ol li 
+{
+	text-indent: -30px;
+	margin: 0 0 10px 20px;
+}
+
+@media only screen and (max-width: 600px) 
+{
+	#GUIDE_CONTAINER
+	{
+		width: 100%;
+		padding: 0 0 0 10px;
+	}
+	
+	#GUIDE_CONTAINER ol
+	{
+		width: 100%;
+	}
+}
+
+@media only screen and (min-width: 1000px) 
+{
+	#GUIDE_CONTAINER
+	{
+		width: 70%;
+	}
+	
+	#GUIDE_CONTAINER ol
+	{
+		width: 85%;
+	}
+}
+
+#HEADER
+{
+	margin: 15px 0 5px;
+}
+
+#HEADER h3
+{
+	padding: 9px 1px 0;
+}
+
+#HEADER input
+{
+	background-color: #ebebeb;
+	padding: 3px 4px 4px;
+	float: right;
+	font-variant: small-caps;
+	font-size: 0.9em;
+	margin: 7px 3px 3px;
+}
+
+#HEADER input:hover
+{
+	background-color: #d41717;
+	color: white;
+}
+
+#RESET_CONTROLS
+{
+	display: inline-block;
+}
+
+#DUMMY
+{
+	visibility: hidden;
+}
+
+#MAP_CONTAINER
+{
+	position: relative;
+	box-sizing: content-box;
+	width: 66%;
+	margin: 3px auto 4px;
+}
+
+#MAP
+{
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+	box-shadow: #b1b1b1 2px 2px 5px;
+	z-index: 0
+}
+
+#MAX_EXP
+{
+	position: relative;
+	left: 4px;
+}
+
+#POKEDEX
+{
+	position: relative;
+	left: -5px;
+	top: 0;
+	font-size: 1.1em;
+}
+
+#SPECIES, #ZONE_CAPTION
+{
+	position: absolute;
+	font-variant: normal;
+	left: 20px;
+	top: 20px;
+	font-size: 0.7em;
+}
+
+#PARTY
+{
+	position: relative;
+	border-width: 1px 0 0;
+}
+
+#PARTY input
+{
+	float: right;
+}
+
+#PARTY td
+{
+	position: relative;
+	padding: 2px 3px 4px;
+}
+
+#PARTY div.index
+{
+	float: left;
+}
+
+#PARTY img
+{
+	margin: 3px 3px 0;
+	float: left;
+}
+
+#PARTY sup
+{
+	margin: 3px 0 0;
+}
+
+#PLAYER
+{
+	width: 7.5%;
+}
+
+#POKEMON
+{
+	width: 100%;
+	padding: 0 5px;
+}
+
+#POKEMON td
+{
+	padding: 0 1px;
+}
+
+#SELECT, #ZONE_CONTROLS
+{
+	position: relative;
+}
+
+#ZONE_CONTROLS input[type='button']
+{
+	margin: 9px 2px 0;
+}
+
+#SELECT img
+{
+	margin-top: 8px;
+}
+
+#SELECT span
+{
+	float: left;
+}
+
+#SHINY
+{
+	margin: 4px 0 0 !important;
+}
+
+/*reset prompt*/
+#PROMPT
+{
+	display: inline-block;
+	float: right;
+	font-variant: small-caps;
+	margin: 6px 6px 0;
+}
+
+#PROMPT input
+{
+	margin-left: 10px;
+}
+
+#PROMPT label
+{
+	margin: 1px 0 0;
+}
+
+/*overwrite prompt*/
+#OVERWRITE
+{
+	margin: 8px 0 0 7px;
+}
+
+#ERROR
+{
+	background: linear-gradient(90deg, #d41717 -50%, #FCFCF0 20%
+		, #FCFCF0 80%, #d41717 150%);
+	border-radius: 2px;
+	font-variant: small-caps;
+	font-size: 1.2em;
+	padding: 4px;
+	width: 85%;
+	margin: 0 auto;
+}
+
+#OPTIONS
+{
+	width: 193px;
+}
+
+#OPTIONS input
+{
+	margin: 10px 0 0;
+}
+
+#RARITY
+{
+	border-style: dotted;
+	border-width: 1px 0 0;
+}
+
+#RECORDS
+{
+	border-width: 1px 0 0;
+}
+
+#SAVE
+{
+	background-image: url("save.png");
+	background-repeat: no-repeat;
+	background-position: 92% 50%;
+	padding-right: 30px !important;
+	float: right;
+}
+
+#STATS
+{
+	padding: 0 0;
+	width: 100%;
+	border-width: 0;
+}
+
+#TRACKER_CONTROLS
+{
+	width: 100%;
+}
+
+#TRACKER_CONTROLS > input:first-of-type
+{
+	margin: 4px;
+}
+
+#CONTROLS
+{
+	border-width: 1px 0 0;
+}
+
+#STATS_HEADINGS
+{
+	border-width: 0 !important;
+}
+
+#STATS_HEADINGS td
+{
+	border-width: 0 !important;
+}
+
+#STAT_INPUT
+{
+	border-width: 0 !important;
+}
+
+#STAT_INPUT input
+{
+	margin: 0 0 1px;
+	padding: 2px 1px 2px 4px;
+	box-shadow: 0 1px 2px black;
+	width: 45px;
+}
+
+#ERROR_CONTAINER input[type='checkbox']
+{
+	margin: 3px 0 0 7px;
+}
+
+#POKEMON_CONTROLS 
+{
+	position: relative;
+}
+
+#POKEMON_CONTROLS button
+{
+	margin: 8px 7px 0;
+	transform: scale(1.3);
+}
+
+#POKEMON_CONTROLS input.button
+{
+	float: left;
+}
+
+#POKEMON_CONTROLS button:first-of-type
+{
+	margin-top: 6px;
+	margin-left: 11px;
+}
+
+#POKEMON_CONTROLS button:last-of-type
+{
+	margin-right: 15px;
+}
+
+#TRACK
+{
+	margin: 1px 8px 0;
+	/* vertically center the checkbox */
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+#TRACKER img.types
+{
+	float: left;
+	top: -2px;
+	left: 0;
+}
+
+#TRACKER
+{
+	border-width: 1px 0 0;
+	margin: 3px 0 0;
+	width: 100%;
+}
+
+/* disable spinner */
+#TRACKER input::-webkit-outer-spin-button,
+#TRACKER input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#TRACKER input[type='number']
+{
+	display: inline-block;
+	box-shadow: 0 1px 2px black;
+	text-align: left;
+	font-size: 0.85em;
+	margin: 0;
+	padding: 0 0 0 2px;
+	width: 37px;
+	-moz-appearance:textfield;
+}
+
+#TRACKER tr td:first-child
+{
+	padding: 4px 4px 4px 7px;
+	text-align: left;
+}
+
+#TRACKER tr td:first-child img
+{
+	position: relative;
+	top: -4px;
+	left: -2px;
+}
+
+/* target the cell holding the KO input and set min width to prevent awkward collapse on small screens */
+#TRACKER tr td:last-of-type
+{
+	min-width: 103px;
+}
+
+#VITAMIN_LABELS
+{
+	margin: 4px 0 0;
+}
+
+#VITAMIN_LABELS span
+{
+	font-variant: small-caps;
+	display: inline-block;
+	margin: 0 2.6%;
+	position: relative;
+	left: -8px;
+}
+
+#VETERAN
+{
+	padding: 5px 0;
+}
+
+#VETERAN input
+{
+	width: 40px;
+	margin: 0 1%;
+}
+
+#BLUE
+{
+	background-image: url("blue.png");
+	/* opacity: 25%; */
+}
+
+#YELLOW
+{
+	position: relative;
+	left: -1px;
+	color: #F3ED7B;
+	background-image: url("yellow.png");
+}
+
+#RED
+{
+	background-image: url("red.png");
+	text-align: bottom;
+}
+
+#CRYSTAL
+{
+	color: #fcf3f6;
+	background-image: url("crystal.png");
+}
+
+#SILVER
+{
+	color: #a3cbe5;
+	background-image: url("silver.png");
+}
+
+#GOLD
+{
+	color: #b6a672;
+	background-image: url("gold.png");
+}
+
+#ZONE
+{
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+.avatar
+{
+	height: 125%;
+	position: relative;
+	top: -5px;
+}
+
+.bold
+{
+	font-weight: bold;
+}
+
+.red
+{
+	color: #EF4934;
+	text-shadow: 1px 1px 1px black;
+}
+
+.blue
+{
+ color: #00A0DB;
+}
+
+.yellow
+{
+	color: #F3ED7B;
+	text-shadow: 1px 1px 2px black;
+}
+
+.gray
+{
+	color: #666666;
+}
+
+.base {
+	display:inline-block;
+	margin: 0 5px;
+}
+
+.bottomborder
+{
+	border-width: 0 0 1px;
+}
+
+.floatRight
+{
+	float: right;
+}
+
+.flipVertical {
+	-webkit-transform: scaleY(-1);
+  transform: scaleY(-1);
+}
+
+.floatLeft
+{
+	display: inline-block;
+	float: left;
+}
+
+.framed
+{
+	box-shadow: #839172 0 0 3px;
+	border-width: 1px;
+	border-radius: 8px;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.highlighted
+{
+	background-color: #e0f4ff !important;
+}
+
+.mapCaption
+{
+	float: left;
+	position: absolute;
+	left: 0;
+	bottom: 10px;
+	width: 200px;
+	background-color: #ebebeb;
+	box-shadow: inset black -2px -2px 8px;
+	padding: 3px;
+	z-index: 2;
+}
+
+.clickarea
+{
+	width: 12.5%;
+	height: 12.5%;
+	display: inline-block;
+	z-index: 1;
+}
+
+.clickarea:hover
+{
+	visibility: visible;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-image: url('player_target.png');
+}
+
+.index
+{
+	font-variant: small-caps;
+}
+
+.italic
+{
+	font-style: italic;
+}
+
+.right
+{
+	text-align: right;
+}
+
+.saved
+{
+	background-color: #DDEAF0;
+	font-style: italic;
+}
+
+.small
+{
+	font-size: 12pt;
+}
+
+.smallButton
+{
+	background-color: #f7f7f7;
+	font-size: 0.6em;
+	font-variant: small-caps;
+	padding: 1px 2px;
+	outline: 1px solid #839172;
+}
+
+.smallButton:hover
+{
+	background-color: #F3F3F3;
+}
+
+.shaded
+{
+	background-color: #c2c2c2;
+}
+
+.thumb
+{
+	float: left;
+	margin: -4px 0;
+}
+
+.title td
+{
+	font-variant: small-caps;
+}
+
+.title
+{
+	font-weight: bold;
+}
+
+.trackerArrow
+{
+	margin: 0 9px 0;
+	display: inline-block;
+	transform: scale(1.1);
+}
+
+.trackerArrow:last-of-type
+{
+	margin: -1px 0 0 10px;
+}
+
+.underline
+{
+	text-decoration: underline;
+}
+
+.linked
+{
+	border-width: 0 0 1px;
+}
+/* EOF */
+
+    /* Additional CSS styles */
+    .paragraph-container {
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 1.5;
+        margin: 1px;
+        padding: 1px;
+    }
+    
+    .paragraph-container p {
+        font-size: 16px;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+    
+    .paragraph-container h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .highlight {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    
+.paragraph-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add any additional styles for the image here */
+}
