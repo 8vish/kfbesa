@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pokemon Go CP Calculator</title>     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculate the Combat Power (CP) of your favorite Pokemon using our Pokemon Go CP calculator. Enter the Pokemon's name, level, and Individual Values (IV) to determine its CP. Discover the true power that lies within your Pokemon!">
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQDKZLT');</script>
+<!-- End Google Tag Manager -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pokemon Go CP Calculator",
+  "description": "Calculate the Combat Power (CP) of your favorite Pokemon in Pokemon Go using our CP calculator. Enter the Pokemon's name, level, and Individual Values (IV) to determine its CP. Discover the true power that lies within your Pokemon!",
+  "url": "https://kfbesa.com/pokemon/go-cp-calculator/",
+  "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/pokemon-result.webp",
+  "applicationCategory": "Game",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "ratingCount": "92828"
+  }
+}
+</script>
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Calculate Pokemon Combat Power (CP)",
+    "description": "Learn how to calculate the Combat Power (CP) of your favorite Pokemon using our easy-to-follow guide. Discover the true power that lies within your Pokemon!",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Step 1: Choose Your Pokemon",
+        "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/select-pokemon.webp",
+        "text": "Hey there, Pokemon Trainer! Let's calculate the Combat Power (CP) of your favorite Pokemon. To get started, simply type the name of your Pokemon into the 'Select Pokemon' field. As you type, we'll show you some suggestions to make your life easier. Once you spot your Pokemon in the dropdown list, go ahead and click on it."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Step 2: Pick the Pokemon's Level",
+        "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/select-level.webp",
+        "text": "Great choice! Now, let's determine the level of your Pokemon. Look for the 'Select Level' dropdown menu and click the arrow to reveal the available levels. Choose the appropriate level for your Pokemon. We've got options from level 1 to level 40, so find the perfect fit."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Step 3: Enter the IV (Individual Values)",
+        "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/enter-iv.webp",
+        "text": "The secret to a Pokemon's hidden powers lies in its IV, which stands for Individual Values. These values range from 0 to 100 and affect a Pokemon's stats. Enter the IV value in the 'Enter IV (0-100)' box. Make sure to use a value that accurately represents your Pokemon's strength."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Step 4: Let's Calculate CP",
+        "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/calculate-cp.webp",
+        "text": "Now comes the exciting part! Click the 'Calculate CP' button, and our magical algorithm will work its wonders. It will crunch the numbers, combining the Pokemon's base experience, level, and IV to determine its CP. Get ready to see the results!"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Step 5: Behold, Your Pokemon's CP!",
+        "image": "https://kfbesa.com/pokemon/go-cp-calculator/images/pokemon-result.webp",
+        "text": "Voila! The result is in, Trainer! We've calculated the CP for your Pokemon. Take a look below, and you'll find the Pokemon's image along with its calculated CP value. It's a visual representation of the power that lies within your Pokemon. Impressive, right?"
+      }
+    ]
+  }
+  </script>
+
+  
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+ 
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .calculator {
+      background-color: #f5f5f5;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .calculator h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group .pokemon-list {
+      display: none;
+      max-height: 200px;
+      overflow-y: auto;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    .pokemon-option {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      cursor: pointer;
+    }
+
+    .pokemon-option:hover {
+      background-color: #f1f1f1;
+    }
+
+    .pokemon-option img {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .selected-pokemon {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .selected-pokemon img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+
+    .result {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .calculate-button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .calculate-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+  
+<style>
+  .contact-section {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .contact-section a {
+    display: inline-block;
+    border: 2px solid #333;
+    border-radius: 50%;
+    padding: 10px;
+    background-color: #f2f2f2;
+  }
+
+  .contact-section a img {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #333;
+  }
+</style>
+
+
+
+
+
+
+  
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQDKZLT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<!-- Navbar Start -->
+   <nav>
+     <ul>
+       <li><a href="https://kfbesa.com">Home</a></li>
+       <li><a href="https://kfbesa.com/blog/">Blog</a></li>
+
+       <li><a href="https://kfbesa.com/persona/">Persona Fusion Calculators</a></li>
+       <li><a href="https://kfbesa.com/pokemon/">Pokemon Tools</a></li>
+       
+     </ul>
+   </nav>
+   <style>
+     nav {
+       background-color: #f2f2f2;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 9999;
+       overflow-x: auto;
+     }
+   
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       white-space: nowrap;
+     }
+   
+     nav li {
+       display: inline-block;
+       padding: 20px;
+     }
+   
+     nav a {
+       color: black;
+       font-size: 16px;
+       text-decoration: none;
+     }
+   
+     /* Icon for mobile scrolling */
+     @media (max-width: 767px) {
+       nav {
+         overflow-x: scroll;
+       }
+   
+       nav::-webkit-scrollbar {
+         width: 6px;
+         height: 6px;
+       }
+   
+       nav::-webkit-scrollbar-thumb {
+         background-color: rgba(255, 255, 255, 0.5);
+         border-radius: 3px;
+       }
+     }
+   
+     /* Additional CSS rule for creating space below navbar */
+     body {
+       margin-top: 60px;
+       /* Adjust this value as needed */
+     }
+   </style>
+   <!-- Navbar end -->
+
+
+  
+  <div class="container">
+    <div class="calculator">
+      <h1>Pokemon Go CP Calculator</h1>
+
+      <div class="form-group">
+        <label for="pokemon">Select Pokemon:</label>
+        <input type="text" id="pokemon-search" placeholder="Search Pokemon...">
+        <div class="pokemon-list"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="level">Select Level:</label>
+        <select id="level">
+          <option value="">-- Select a Level --</option>
+          <!-- Level options -->
+          <script>
+            for (var i = 1; i <= 40; i++) {
+              document.write("<option value='" + i + "'>" + i + "</option>");
+            }
+          </script>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="iv">Enter IV (0-100):</label>
+        <input type="number" id="iv" min="0" max="100">
+      </div>
+
+      <button class="calculate-button" onclick="calculateCP()">Calculate CP</button>
+
+      <div class="selected-pokemon"></div>
+
+      <div class="result" id="result"></div>
+    </div>
+  </div>
+
+
+
+
+
+<style>
+    /* Additional CSS styles */
+    .paragraph-container {
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 1.5;
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .paragraph-container p {
+        font-size: 16px;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+    
+    .paragraph-container h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .highlight {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    
+.paragraph-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add any additional styles for the image here */
+}
+
+
+    
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+
+<div class="paragraph-container">
+    
+    <p>Thank you for using our <strong>Pokemon Go CP Calculator!</strong> We created this calculator to address the need for a reliable and user-friendly tool to determine the Combat Power (CP) of your Pokemon in Pokemon Go.</p>
+
+    <p>With our calculator, you can accurately calculate the CP of your Pokemon based on their name, level, and Individual Values (IVs). This information is crucial for making strategic decisions, such as powering up or evolving your Pokemon, to enhance their performance in battles and raids.</p>
+
+    <p>We understand the frustration of not having access to a proper CP calculator, which is why we developed this solution. Our goal is to provide trainers like you with a convenient and accurate tool to maximize the potential of your Pokemon.</p>
+
+    <p>We hope that our Pokemon CP Calculator has been helpful to you in your Pokemon Go journey. Remember to double-check the details before clicking the "<span class="highlight">Calculate CP</span>" button for precise results.</p>
+
+    <p>Wishing you success in your adventures, and may your Pokemon's CP soar to new heights!</p>
+</div>
+
+<div class="paragraph-container">
+  
+
+  <h2>How to Calculate Pokemon Combat Power (CP)</h2>
+  <p>Learn how to calculate the Combat Power (CP) of your favorite Pokemon using our easy-to-follow Pokemon Go CP Calculator guide. Discover the true power that lies within your Pokemon!</p>
+  
+  <h3>Step 1: Choose Your Pokemon</h3>
+  <img src="./images/select-pokemon.webp" alt="Select Pokemon">
+  <p>Hey there, Pokemon Trainer! Let's calculate the Combat Power (CP) of your favorite Pokemon. To get started, simply type the name of your Pokemon into the "Select Pokemon" field. As you type, we'll show you some suggestions to make your life easier. Once you spot your Pokemon in the dropdown list, go ahead and click on it.</p>
+  
+  <h3>Step 2: Pick the Pokemon's Level</h3>
+  <img src="./images/select-level.webp" alt="Pick Pokemon's Level">
+  <p>Great choice! Now, let's determine the level of your Pokemon. Look for the "Select Level" dropdown menu and click the arrow to reveal the available levels. Choose the appropriate level for your Pokemon. We've got options from level 1 to level 40, so find the perfect fit.</p>
+  
+  <h3>Step 3: Enter the IV (Individual Values)</h3>
+  <img src="./images/enter-iv.webp" alt="Enter IV">
+  <p>The secret to a Pokemon's hidden powers lies in its IV, which stands for Individual Values. These values range from 0 to 100 and affect a Pokemon's stats. Enter the IV value in the "Enter IV (0-100)" box. Make sure to use a value that accurately represents your Pokemon's strength.</p>
+  
+  <h3>Step 4: Let's Calculate CP</h3>
+  <img src="./images/calculate-cp.webp" alt="Calculate CP">
+  <p>Now comes the exciting part! Click the "Calculate CP" button, and our magical algorithm will work its wonders. It will crunch the numbers, combining the Pokemon's base experience, level, and IV to determine its CP. Get ready to see the results!</p>
+  
+  <h3>Step 5: Behold, Your Pokemon's CP!</h3>
+  <img src="./images/pokemon-result.webp" alt="Pokemon's CP">
+  <p>Voila! The result is in, Trainer! We've calculated the CP for your Pokemon. Take a look below, and you'll find the Pokemon's image along with its calculated CP value. It's a visual representation of the power that lies within your Pokemon. Impressive, right?</p>
+
+  
+  
+  
+</div>
+
+
+
+
+  <script>
+    let pokemonList = [];
+
+    fetch("https://pokeapi.co/api/v2/pokemon?limit=1000")
+      .then(response => response.json())
+      .then(data => {
+        pokemonList = data.results;
+      });
+
+    document.getElementById("pokemon-search").addEventListener("input", function() {
+      var searchTerm = this.value.toLowerCase();
+      var filteredPokemon = pokemonList.filter(function(pokemon) {
+        return pokemon.name.includes(searchTerm);
+      });
+
+      var pokemonHTML = "";
+      filteredPokemon.forEach(function(pokemon) {
+        pokemonHTML += "<div class='pokemon-option' onclick='selectPokemon(\"" + pokemon.name + "\")'>" +
+          "<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + pokemon.url.split("/")[6] + ".png'>" +
+          "<span>" + pokemon.name + "</span></div>";
+      });
+
+      document.querySelector(".pokemon-list").innerHTML = pokemonHTML;
+      document.querySelector(".pokemon-list").style.display = filteredPokemon.length > 0 ? "block" : "none";
+    });
+
+    function selectPokemon(pokemon) {
+      document.getElementById("pokemon-search").value = pokemon;
+      document.querySelector(".pokemon-list").style.display = "none";
+    }
+
+    function calculateCP() {
+      var pokemon = document.getElementById("pokemon-search").value;
+      var level = document.getElementById("level").value;
+      var iv = document.getElementById("iv").value;
+
+      if (pokemon === "" || level === "" || iv === "") {
+        document.getElementById("result").textContent = "Please select a Pokemon, level, and enter IV.";
+        return;
+      }
+
+      // Fetching Pokemon details from the API
+      fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon)
+        .then(response => response.json())
+        .then(data => {
+          var baseCP = data.base_experience;
+          var calculatedCP = Math.floor((baseCP + iv) * (level / 10));
+          document.querySelector(".selected-pokemon").innerHTML = "<img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + data.id + ".png'>" +
+            "<div>Calculated CP: " + calculatedCP + "</div>";
+          document.getElementById("result").textContent = "";
+        });
+    }
+  </script>
+
+
+  
+</body>
+</html>

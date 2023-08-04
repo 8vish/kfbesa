@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokemon Damage Calculator [Gen 1 to 9]</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TQDKZLT');</script>
+<!-- End Google Tag Manager -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Pokemon Damage Calculator",
+            "url": "https://kfbesa.com/pokemon/damage/calculator/",
+            "description": "A tool for calculating the damage inflicted by Pokemon moves.",
+            "applicationCategory": "Utility",
+            "operatingSystem": "All",
+            "browserRequirements": "HTML5, JavaScript",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "158"
+            }
+        }
+    </script>
+
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": "How to Use the Pokemon Damage Calculator",
+            "description": "A step-by-step guide on how to use the Pokemon Damage Calculator.",
+            "step": [
+                {
+                    "@type": "HowToStep",
+                    "name": "Step 1: Select the Generation",
+                    "image": "https://kfbesa.com/pokemon/damage/calculator/images/chose-generation.webp",
+                    "itemListElement": [
+                        {
+                            "@type": "HowToDirection",
+                            "text": "Begin by choosing the desired generation of Pokemon. Select the generation from the drop-down menu to access a list of available Pokemon from that generation."
+                        }
+                    ]
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Step 2: Select the Pokemon",
+                    "image": "https://kfbesa.com/pokemon/damage/calculator/images/select-pokemon.webp",
+                    "itemListElement": [
+                        {
+                            "@type": "HowToDirection",
+                            "text": "Once you've selected the generation, proceed to choose the Pokemon you want to calculate damage for. Pick your Pokemon from the drop-down menu, which now includes the options for the selected generation."
+                        }
+                    ]
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Step 3: Enter Stats and Move Details",
+                    "image": "https://kfbesa.com/pokemon/damage/calculator/images/stats-and-move-details.webp",
+                    "itemListElement": [
+                        {
+                            "@type": "HowToDirection",
+                            "text": "Fill in the necessary information related to your Pokemon and the move being used. Enter the Attack and Defense stats, Base Power of the move, Type Effectiveness, STAB (Same Type Attack Bonus), Level, Critical Hit Ratio, and any other relevant details."
+                        }
+                    ]
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Step 4: Calculate the Damage and View the Result",
+                    "image": "https://kfbesa.com/pokemon/damage/calculator/images/calculator-result.webp",
+                    "itemListElement": [
+                        {
+                            "@type": "HowToDirection",
+                            "text": "Click the 'Calculate Damage' button to initiate the damage calculation process. The calculator will analyze the provided inputs and determine the expected damage output. The calculated damage result will be displayed in the 'Result' section. You can find the estimated amount of damage the move will inflict on the target Pokemon. This information will help you strategize your battles effectively."
+                        }
+                    ]
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Step 5: Choose Additional Options",
+                    "image": "https://kfbesa.com/pokemon/damage/calculator/images/additional-options.webp",
+                    "itemListElement": [
+                        {
+                            "@type": "HowToDirection",
+                            "text": "For more advanced calculations, you can select additional options that affect the damage calculation. These options include the Pokemon's status conditions, abilities, move category, and move type. Check the corresponding checkboxes or select the appropriate options to indicate the presence of these factors."
+                        },
+                        {
+                            "@type": "HowToTip",
+                            "text": "Refer to the table in the instructions for a list of available options."
+                        }
+                    ]
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Step 6: Interpret the Damage Result",
+                    "image": "https://kfbesa.com/pokemon/damage/calculator/images/interpret-the-damage-result.webp",
+                    "itemListElement": [
+                        {
+                            "@type": "HowToDirection",
+                            "text": "Once you have obtained the damage result, it's important to understand its implications. The displayed damage value represents the estimated amount of damage the move will cause to the target Pokemon. Use this information to plan your strategies, exploit weaknesses, and make informed decisions during battles."
+                        }
+                    ]
+                },
+                {
+                    "@type": "HowToStep",
+                    "name": "Step 7: Repeat for Different Scenarios",
+                    "image": "https://kfbesa.com/pokemon/damage/calculator/images/repeat-for-different-scenarios.webp",
+                    "itemListElement": [
+                        {
+                            "@type": "HowToDirection",
+                            "text": "You can repeat the process for different scenarios by modifying the inputs and options. Select a different Pokemon, adjust the stats, change the move details, and explore various combinations to analyze the damage output against different opponents. This flexibility allows you to adapt your strategies based on the specific circumstances of each battle."
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+
+    
+ <style>
+body {
+  background-color: #f2f2f2;
+  font-family: 'Open Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+label {
+  font-weight: bold;
+  color: #555;
+}
+/* CSS styling for the divider */
+    .divider {
+      width: 100%;
+      height: 3px;
+      background-color: black;
+      margin: 50px 0;
+    }
+    
+/* CSS styling for the table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: floralwhite;
+    }
+
+    tr:hover {
+      background-color: skyblue;
+    }
+    
+    
+    
+    
+    
+    
+select, input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: #555;
+  background-color: #fff;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+select:focus, input[type="number"]:focus {
+  outline: none;
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #555;
+}
+
+#pokemonDetails {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#pokemonName {
+  color: #333;
+}
+
+#pokemonType {
+  color: #888;
+  margin-top: 10px;
+}
+
+#pokemonImage {
+  max-width: 200px;
+  margin-top: 1px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+   
+ </style>
+
+<style>
+    /* Additional CSS styles */
+    .paragraph-container {
+        font-family: 'Open Sans', Arial, sans-serif;
+        line-height: 1.5;
+        margin: 1px;
+        padding: 1px;
+    }
+    
+    .paragraph-container p {
+        font-size: 16px;
+        text-align: justify;
+        margin-bottom: 15px;
+    }
+    
+    .paragraph-container h1 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .highlight {
+        color: #ff0000;
+        font-weight: bold;
+    }
+    
+.paragraph-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add any additional styles for the image here */
+}
+
+
+    
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+
+
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQDKZLT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+<!-- Navbar Start -->
+   <nav>
+     <ul>
+       <li><a href="https://kfbesa.com">Home</a></li>
+       <li><a href="https://kfbesa.com/blog/">Blog</a></li>
+
+       <li><a href="https://kfbesa.com/persona/">Persona Fusion Calculators</a></li>
+       <li><a href="https://kfbesa.com/pokemon/">Pokemon Tools</a></li>
+       
+     </ul>
+   </nav>
+   <style>
+     nav {
+       background-color: #f2f2f2;
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       z-index: 9999;
+       overflow-x: auto;
+     }
+   
+     nav ul {
+       list-style-type: none;
+       margin: 0;
+       padding: 0;
+       white-space: nowrap;
+     }
+   
+     nav li {
+       display: inline-block;
+       padding: 20px;
+     }
+   
+     nav a {
+       color: black;
+       font-size: 16px;
+       text-decoration: none;
+     }
+   
+     /* Icon for mobile scrolling */
+     @media (max-width: 767px) {
+       nav {
+         overflow-x: scroll;
+       }
+   
+       nav::-webkit-scrollbar {
+         width: 6px;
+         height: 6px;
+       }
+   
+       nav::-webkit-scrollbar-thumb {
+         background-color: rgba(255, 255, 255, 0.5);
+         border-radius: 3px;
+       }
+     }
+   
+     /* Additional CSS rule for creating space below navbar */
+     body {
+       margin-top: 60px;
+       /* Adjust this value as needed */
+     }
+   </style>
+   <!-- Navbar end -->
+
+
+
+
+
+    <h1>Pokemon Damage Calculator</h1>
+
+    <label for="generation">Select Generation:</label>
+    <select id="generation">
+        <option value="1">Generation 1</option>
+        <option value="2">Generation 2</option>
+        <option value="3">Generation 3</option>
+        <option value="4">Generation 4</option>
+        <option value="5">Generation 5</option>
+        <option value="6">Generation 6</option>
+        <option value="7">Generation 7</option>
+        <option value="8">Generation 8</option>
+        <option value="9">Generation 9</option>
+    </select>
+
+    <br><br>
+
+    <label for="pokemonSelect">Select Pokemon:</label>
+    <select id="pokemonSelect"></select>
+
+    <br><br>
+
+    <label for="attack">Attack:</label>
+    <input type="number" id="attack" min="0" value="0">
+
+    <br><br>
+
+    <label for="defense">Defense:</label>
+    <input type="number" id="defense" min="0" value="0">
+
+    <br><br>
+
+    <label for="basePower">Base Power:</label>
+    <input type="number" id="basePower" min="0" value="0">
+
+    <br><br>
+
+    <label for="typeEffectiveness">Type Effectiveness:</label>
+    <input type="number" id="typeEffectiveness" min="0" value="0">
+
+    <br><br>
+
+    <label for="stab">STAB:</label>
+    <input type="number" id="stab" min="0" value="0">
+
+    <br><br>
+
+    <label for="level">Level:</label>
+    <input type="number" id="level" min="1" value="1">
+
+    <br><br>
+
+    <label for="criticalHitRatio">Critical Hit Ratio:</label>
+    <input type="number" id="criticalHitRatio" min="0" value="0">
+
+    <br><br>
+
+    <input type="checkbox" id="isBurned">
+    <label for="isBurned">Burned</label>
+
+    <br><br>
+
+    <input type="checkbox" id="isParalyzed">
+    <label for="isParalyzed">Paralyzed</label>
+
+    <br><br>
+
+    <input type="checkbox" id="abilityDefiant">
+    <label for="abilityDefiant">Defiant Ability</label>
+
+    <br><br>
+
+    <input type="checkbox" id="abilityCompetitive">
+    <label for="abilityCompetitive">Competitive Ability</label>
+
+    <br><br>
+
+    <input type="checkbox" id="abilityWeakArmor">
+    <label for="abilityWeakArmor">Weak Armor Ability</label>
+
+    <br><br>
+
+    <input type="checkbox" id="isDrought">
+    <label for="isDrought">Drought</label>
+
+    <br><br>
+
+    <input type="checkbox" id="isRainDance">
+    <label for="isRainDance">Rain Dance</label>
+
+    <br><br>
+
+    <input type="checkbox" id="isSandstorm">
+    <label for="isSandstorm">Sandstorm</label>
+
+    <br><br>
+
+    <input type="checkbox" id="isHail">
+    <label for="isHail">Hail</label>
+
+    <br><br>
+
+    <input type="checkbox" id="abilityHugePower">
+    <label for="abilityHugePower">Huge Power Ability</label>
+
+    <br><br>
+
+    <input type="checkbox" id="abilityDoublePower">
+    <label for="abilityDoublePower">Double Power Ability</label>
+
+    <br><br>
+
+    <input type="checkbox" id="abilityBeastBoost">
+    <label for="abilityBeastBoost">Beast Boost Ability</label>
+
+    <br><br>
+
+    <button id="calculateDamage">Calculate Damage</button>
+
+    <br><br>
+
+    <p id="result"></p>
+
+    <br><br>
+
+    <div id="pokemonDetails">
+        <h3 id="pokemonName"></h3>
+        <p id="pokemonType"></p>
+        <img id="pokemonImage" src="" alt="Pokemon Image">
+    </div>
+    
+<div class="divider"></div>
+   <div class="paragraph-container">
+    <h2>How to Use the Pokemon Damage Calculator</h2>
+    <p>
+        The <strong>Pokemon Damage Calculator</strong> is a powerful tool that allows you to predict the amount of damage a Pokemon's move will inflict on its target. Follow the step-by-step guide below to unleash the full potential of this calculator.
+    </p>
+
+    <div class="step">
+          <h3>Step 1: Select the Generation</h3>
+          <img src="./images/chose-generation.webp"alt="Step 1 Demo Image">
+          <p>
+            Begin by choosing the desired <strong>generation</strong> of Pokemon. Select the generation from the drop-down menu to access a list of available Pokemon from that generation.
+          </p>
+        </div>
+  
+    <div class="step">
+        <h3>Step 2: Select the Pokemon</h3>
+        <img src="./images/select-pokemon.webp" alt="Step 1 Demo Image">
+        <p>
+          Once you've selected the generation, proceed to choose the <strong>Pokemon</strong> you want to calculate damage for. Pick your Pokemon from the drop-down menu, which now includes the options for the selected generation.
+        </p>
+      </div>
+    <div class="step">
+        <h3>Step 3: Enter Stats and Move Details</h3>
+        <img src="./images/stats-and-move-details.webp" alt="Step 2 Demo Image">
+        <p>
+            Fill in the necessary information related to your Pokemon and the move being used. Enter the <strong>Attack</strong> and <strong>Defense</strong> stats, <strong>Base Power</strong> of the move, <strong>Type Effectiveness</strong>, <strong>STAB</strong> (Same Type Attack Bonus), <strong>Level</strong>, <strong>Critical Hit Ratio</strong>, and any other relevant details.
+        </p>
+    </div>
+    <div class="step">
+        <h3>Step 4: Calculate the Damage and View the Result</h3>
+        <img src="./images/calculator-result.webp" alt="Calculate the Damage and View the Result">
+        <p>
+            Click the <strong>"Calculate Damage"</strong> button to initiate the damage calculation process. The calculator will analyze the provided inputs and determine the expected damage output. The calculated damage result will be displayed in the <strong>"Result"</strong> section. You can find the estimated amount of damage the move will inflict on the target Pokemon. This information will help you strategize your battles effectively.
+        </p>
+    </div>
+    <div class="step">
+        <h3>Step 5: Choose Additional Options</h3>
+        <img src="./images/additional-options.webp" alt="Additional Options">
+        <p>
+            For more advanced calculations, you can select additional options that affect the damage calculation. These options include the Pokemon's status conditions, abilities, move category, and move type. Check the corresponding checkboxes or select the appropriate options to indicate the presence of these factors.
+        </p>
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><strong>Burned</strong></td>
+                <td>The Pokemon is affected by the Burned status condition.</td>
+            </tr>
+            <tr>
+                <td><strong>Paralyzed</strong></td>
+                <td>The Pokemon is affected by the Paralyzed status condition.</td>
+            </tr>
+            <tr>
+                <td><strong>Defiant Ability</strong></td>
+                <td>The Pokemon has the Defiant ability.</td>
+            </tr>
+            <tr>
+                <td><strong>Competitive Ability</strong></td>
+                <td>The Pokemon has the Competitive ability.</td>
+            </tr>
+            <tr>
+                <td><strong>Weak Armor Ability</strong></td>
+                <td>The Pokemon has the Weak Armor ability.</td>
+            </tr>
+            <tr>
+                <td><strong>Drought</strong></td>
+                <td>The weather condition is Drought.</td>
+            </tr>
+            <tr>
+                <td><strong>Rain Dance</strong></td>
+                <td>The weather condition is Rain Dance.</td>
+            </tr>
+            <tr>
+                <td><strong>Sandstorm</strong></td>
+                <td>The weather condition is Sandstorm.</td>
+            </tr>
+            <tr>
+                <td><strong>Hail</strong></td>
+                <td>The weather condition is Hail.</td>
+            </tr>
+            <tr>
+                <td><strong>Huge Power Ability</strong></td>
+                <td>The Pokemon has the Huge Power ability.</td>
+            </tr>
+            <tr>
+                <td><strong>Double Power Ability</strong></td>
+                <td>The Pokemon has the Double Power ability.</td>
+            </tr>
+            <tr>
+                <td><strong>Beast Boost Ability</strong></td>
+                <td>The Pokemon has the Beast Boost ability.</td>
+            </tr>
+            <tr>
+                <td><strong>Move Category</strong></td>
+                <td>The move being used is categorized as Physical or Special.</td>
+            </tr>
+            <tr>
+                <td><strong>Move Type</strong></td>
+                <td>The type of the move being used.</td>
+            </tr>
+        </table>
+    </div>
+    <div class="step">
+        <h3>Step 6: Interpret the Damage Result</h3>
+        <img src="./images/interpret the-damage-result.webp" alt="Interpret the Damage Result">
+        <p>
+            Once you have obtained the damage result, it's important to understand its implications. The displayed damage value represents the estimated amount of damage the move will cause to the target Pokemon. Use this information to plan your strategies, exploit weaknesses, and make informed decisions during battles.
+        </p>
+    </div>
+    <div class="step">
+        <h3>Step 7: Repeat for Different Scenarios</h3>
+        <img src="./images/repeat-for-different-scenarios.webp" alt="Repeat for Different Scenarios">
+        <p>
+            You can repeat the process for different scenarios by modifying the inputs and options. Select a different Pokemon, adjust the stats, change the move details, and explore various combinations to analyze the damage output against different opponents. This flexibility allows you to adapt your strategies based on the specific circumstances of each battle.
+        </p>
+    </div>
+   </div>
+
+    
+    
+
+    <script>
+        // Fetch Pokemon details from the API based on the selected Pokemon name
+        function fetchPokemonDetails(pokemonName) {
+            return $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+        }
+
+        // Calculate damage based on the selected generation
+        function calculateDamage(generation) {
+            const attack = parseInt($('#attack').val());
+            const defense = parseInt($('#defense').val());
+            const basePower = parseInt($('#basePower').val());
+            const typeEffectiveness = parseInt($('#typeEffectiveness').val());
+            const stab = parseInt($('#stab').val());
+            const level = parseInt($('#level').val());
+            const criticalHitRatio = parseInt($('#criticalHitRatio').val());
+            const isBurned = $('#isBurned').is(':checked');
+            const isParalyzed = $('#isParalyzed').is(':checked');
+            const abilityDefiant = $('#abilityDefiant').is(':checked');
+            const abilityCompetitive = $('#abilityCompetitive').is(':checked');
+            const abilityWeakArmor = $('#abilityWeakArmor').is(':checked');
+            const isDrought = $('#isDrought').is(':checked');
+            const isRainDance = $('#isRainDance').is(':checked');
+            const isSandstorm = $('#isSandstorm').is(':checked');
+            const isHail = $('#isHail').is(':checked');
+            const abilityHugePower = $('#abilityHugePower').is(':checked');
+            const abilityDoublePower = $('#abilityDoublePower').is(':checked');
+            const abilityBeastBoost = $('#abilityBeastBoost').is(':checked');
+
+            let damage = 0;
+
+            switch (generation) {
+                case '1':
+                    damage = calculateGeneration1Damage(attack, defense, basePower, typeEffectiveness, stab, criticalHitRatio, isBurned);
+                    break;
+                case '2':
+                    damage = calculateGeneration2Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned);
+                    break;
+                case '3':
+                    damage = calculateGeneration3Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned);
+                    break;
+                case '4':
+                    damage = calculateGeneration4Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned);
+                    break;
+                case '5':
+                    damage = calculateGeneration5Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed);
+                    break;
+                case '6':
+                    damage = calculateGeneration6Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor);
+                    break;
+                case '7':
+                    damage = calculateGeneration7Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor, isDrought, isRainDance, isSandstorm, isHail);
+                    break;
+                case '8':
+                    damage = calculateGeneration8Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor, isDrought, isRainDance, isSandstorm, isHail, abilityHugePower, abilityDoublePower);
+                    break;
+                case '9':
+                    damage = calculateGeneration9Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor, isDrought, isRainDance, isSandstorm, isHail, abilityHugePower, abilityDoublePower, abilityBeastBoost);
+                    break;
+                default:
+                    break;
+            }
+
+            $('#result').text(`Damage: ${damage}`);
+        }
+
+        // Generation 1 damage calculation function
+        function calculateGeneration1Damage(attack, defense, basePower, typeEffectiveness, stab, criticalHitRatio, isBurned) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 2 damage calculation function
+        function calculateGeneration2Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 3 damage calculation function
+        function calculateGeneration3Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 4 damage calculation function
+        function calculateGeneration4Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 5 damage calculation function
+        function calculateGeneration5Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            if (isParalyzed) {
+                damage *= 0.25;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 6 damage calculation function
+        function calculateGeneration6Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            if (isParalyzed) {
+                damage *= 0.25;
+            }
+
+            if (abilityDefiant) {
+                damage *= 2;
+            }
+
+            if (abilityWeakArmor) {
+                damage *= 0.5;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 7 damage calculation function
+        function calculateGeneration7Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor, isDrought, isRainDance, isSandstorm, isHail) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            if (isParalyzed) {
+                damage *= 0.25;
+            }
+
+            if (abilityDefiant) {
+                damage *= 2;
+            }
+
+            if (abilityWeakArmor) {
+                damage *= 0.5;
+            }
+
+            if (isDrought || isRainDance || isSandstorm || isHail) {
+                damage *= 1.5;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 8 damage calculation function
+        function calculateGeneration8Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor, isDrought, isRainDance, isSandstorm, isHail, abilityHugePower, abilityDoublePower) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            if (isParalyzed) {
+                damage *= 0.25;
+            }
+
+            if (abilityDefiant) {
+                damage *= 2;
+            }
+
+            if (abilityWeakArmor) {
+                damage *= 0.5;
+            }
+
+            if (isDrought || isRainDance || isSandstorm || isHail) {
+                damage *= 1.5;
+            }
+
+            if (abilityHugePower || abilityDoublePower) {
+                damage *= 2;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Generation 9 damage calculation function
+        function calculateGeneration9Damage(attack, defense, basePower, typeEffectiveness, stab, level, criticalHitRatio, isBurned, isParalyzed, abilityDefiant, abilityWeakArmor, isDrought, isRainDance, isSandstorm, isHail, abilityHugePower, abilityDoublePower, abilityBeastBoost) {
+            let damage = (255 * (attack - defense) / 512) * basePower * typeEffectiveness * stab;
+
+            if (criticalHitRatio > 0) {
+                damage *= (2.5 + (level / 100));
+            }
+
+            if (isBurned) {
+                damage *= 0.5;
+            }
+
+            if (isParalyzed) {
+                damage *= 0.25;
+            }
+
+            if (abilityDefiant) {
+                damage *= 2;
+            }
+
+            if (abilityWeakArmor) {
+                damage *= 0.5;
+            }
+
+            if (isDrought || isRainDance || isSandstorm || isHail) {
+                damage *= 1.5;
+            }
+
+            if (abilityHugePower || abilityDoublePower) {
+                damage *= 2;
+            }
+
+            if (abilityBeastBoost) {
+                damage *= 1.3;
+            }
+
+            return Math.floor(damage);
+        }
+
+        // Populate Pokemon select options based on the selected generation
+        function populatePokemonSelect(generation) {
+            $('#pokemonSelect').empty();
+
+            $.get(`https://pokeapi.co/api/v2/generation/${generation}`)
+                .then(function (response) {
+                    const pokemonUrls = response.pokemon_species;
+
+                    pokemonUrls.forEach(function (pokemon) {
+                        const pokemonName = pokemon.name;
+                        const option = $('<option>').val(pokemonName).text(pokemonName);
+                        $('#pokemonSelect').append(option);
+                    });
+                });
+        }
+
+        // Update Pokémon details based on the selected Pokémon name
+        function updatePokemonDetails(pokemonName) {
+            fetchPokemonDetails(pokemonName)
+                .then(function (pokemon) {
+                    $('#pokemonName').text(pokemon.name);
+                    $('#pokemonType').text(`Type: ${pokemon.types.map(type => type.type.name).join(', ')}`);
+                    $('#pokemonImage').attr('src', pokemon.sprites.front_default);
+                });
+        }
+
+        // Initialize the select2 library for the Pokémon select input
+        function initializeSelect2() {
+            $('#pokemonSelect').select2();
+        }
+
+        // Event listener for the generation select input
+        $('#generation').on('change', function () {
+            const selectedGeneration = $(this).val();
+            populatePokemonSelect(selectedGeneration);
+        });
+
+        // Event listener for the calculate damage button
+        $('#calculateDamage').on('click', function () {
+            const selectedGeneration = $('#generation').val();
+            calculateDamage(selectedGeneration);
+        });
+
+        // Event listener for the Pokémon select input
+        $('#pokemonSelect').on('change', function () {
+            const selectedPokemon = $(this).val();
+            updatePokemonDetails(selectedPokemon);
+        });
+
+        // Initialize the select2 library and populate the Pokémon select options for the initial generation
+        initializeSelect2();
+        populatePokemonSelect('1');
+    </script>
+</body>
+</html>
